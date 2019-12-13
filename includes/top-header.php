@@ -1,4 +1,4 @@
-<?php 
+<?php
 //session_start();
 
 ?>
@@ -23,9 +23,9 @@
 <li><a href="login.php"><i class="icon fa fa-sign-in"></i>Login</a></li>
 <?php }
 else{ ?>
-	
+
 				<li><a href="logout.php"><i class="icon fa fa-sign-out"></i>Logout</a></li>
-				<?php } ?>	
+				<?php } ?>
 				</ul>
 			</div><!-- /.cnt-account -->
 
@@ -33,13 +33,13 @@ else{ ?>
 				<ul class="list-unstyled list-inline">
 					<li class="dropdown dropdown-small">
 						<a href="track-orders.php" class="dropdown-toggle" ><span class="key">Track Order</b></a>
-						
+
 					</li>
 
-				
+
 				</ul>
 			</div>
-			
+
 			<div class="clearfix"></div>
 		</div><!-- /.header-top-inner -->
 	</div><!-- /.container -->

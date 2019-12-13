@@ -8,23 +8,19 @@
     <div class="footer-logo">
         <div class="logo">
             <a href="index.php">
-                
+
 <h3>Shopping Portal</h3>
             </a>
         </div><!-- /.logo -->
-    
+
     </div><!-- /.footer-logo -->
 
      <div class="module-body m-t-20">
-        <p class="about-us"> Nam libero tempore, cum soluta nobis est ses  eligendi optio cumque cum soluta nobis est ses  eligendi optio cumque.</p>
-    
+        <p class="about-us"> Visit Abo El Kheir's Packacing Factory anytime!</p>
+
         <div class="social-icons">
-            
-        <a href="http://facebook.com/transvelo" class='active'><i class="icon fa fa-facebook"></i></a>
-        <a href="#"><i class="icon fa fa-twitter"></i></a>
-        <a href="#"><i class="icon fa fa-linkedin"></i></a>
-        <a href="#"><i class="icon fa fa-rss"></i></a>
-        <a href="#"><i class="icon fa fa-pinterest"></i></a>
+
+        <a href="https://www.facebook.com/mohab.s.ibrahim" class='active'><i class="icon fa fa-facebook"></i></a>
 
         </div><!-- /.social-icons -->
     </div><!-- /.module-body -->
@@ -43,9 +39,8 @@
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<tr><td>Monday-Friday:</td><td class="pull-right">08.00 To 18.00</td></tr>
-					<tr><td>Saturday:</td><td class="pull-right">09.00 To 20.00</td></tr>
-					<tr><td>Sunday:</td><td class="pull-right">10.00 To 20.00</td></tr>
+					<tr><td>Saturday-Thursday:</td><td class="pull-right">08.00 To 18.00</td></tr>
+					<tr><td>Friday:</td><td class="pull-right">15.00 To 20.00</td></tr>
 				</tbody>
 			</table>
 		</div><!-- /.table-responsive -->
@@ -70,7 +65,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>New Delhi, Delhi</p>
+                    <p>6 October, Industrial Area, Cairo, Egypt</p>
                 </div>
             </li>
 
@@ -82,7 +77,7 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <p>(011) 000000000000<br>(011) 000000000000</p>
+                    <p>01555277595<br></p>
                 </div>
             </li>
 
@@ -94,10 +89,10 @@
                     </span>
                 </div>
                 <div class="media-body">
-                    <span><a href="#">info@phpgurukul.com</a></span>
+                    <span><a href="#">mohab.sameh@msa.edu.eg</a></span>
                 </div>
             </li>
-              
+
             </ul>
     </div><!-- /.module-body -->
 </div><!-- /.contact-timing -->
@@ -105,5 +100,3 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </div><!-- /.links-social -->
-
-    
