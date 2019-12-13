@@ -1,28 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-if(isset($_POST['submit']))
-{
-	$category=$_POST['category'];
-	$subcat=$_POST['subcategory'];
-$sql=mysqli_query($con,"insert into subcategory(categoryid,subcategory) values('$category','$subcat')");
-$_SESSION['msg']="SubCategory Created !!";
-
-}
-
-if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from subcategory where id = '".$_GET['id']."'");
-                  $_SESSION['delmsg']="SubCategory deleted !!";
-		  }
-
-?>
+<?php include('C_SubCategory.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +18,7 @@ if(isset($_GET['del']))
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -76,7 +53,7 @@ if(isset($_GET['del']))
 <label class="control-label" for="basicinput">Category</label>
 <div class="controls">
 <select name="category" class="span8 tip" required>
-<option value="">Select Category</option> 
+<option value="">Select Category</option>
 <?php $query=mysqli_query($con,"select * from category");
 while($row=mysqli_fetch_array($query))
 {?>
@@ -87,7 +64,7 @@ while($row=mysqli_fetch_array($query))
 </div>
 </div>
 
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">SubCategory Name</label>
 <div class="controls">
@@ -129,7 +106,7 @@ while($row=mysqli_fetch_array($query))
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-?>									
+?>
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($row['categoryName']);?></td>
@@ -141,13 +118,13 @@ while($row=mysqli_fetch_array($query))
 											<a href="subcategory.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
 										</tr>
 										<?php $cnt=$cnt+1; } ?>
-										
+
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -171,4 +148,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

@@ -1,14 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-
-?>
+<?php include('C_Update_UserLogs.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +18,7 @@ else{
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -36,8 +27,8 @@ else{
 								<h3>Manage Users</h3>
 							</div>
 							<div class="module-body table">
-	
-							
+
+
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 									<thead>
 										<tr>
@@ -47,7 +38,7 @@ else{
 											<th>Login Time</th>
 											<th>Logout Time </th>
 											<th>Status </th>
-											
+
 										</tr>
 									</thead>
 									<tbody>
@@ -56,7 +47,7 @@ else{
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-?>									
+?>
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($row['userEmail']);?></td>
@@ -74,16 +65,16 @@ else
 	echo "Failed";
 }
 										 ?></td>
-											
-											
+
+
 										<?php $cnt=$cnt+1; } ?>
-										
+
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -107,4 +98,3 @@ else
 		} );
 	</script>
 </body>
-<?php } ?>

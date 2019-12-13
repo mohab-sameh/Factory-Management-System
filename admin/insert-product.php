@@ -1,46 +1,4 @@
-
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-	
-if(isset($_POST['submit']))
-{
-	$category=$_POST['category'];
-	$subcat=$_POST['subcategory'];
-	$productname=$_POST['productName'];
-	$productcompany=$_POST['productCompany'];
-	$productprice=$_POST['productprice'];
-	$productpricebd=$_POST['productpricebd'];
-	$productdescription=$_POST['productDescription'];
-	$productscharge=$_POST['productShippingcharge'];
-	$productavailability=$_POST['productAvailability'];
-	$productimage1=$_FILES["productimage1"]["name"];
-	$productimage2=$_FILES["productimage2"]["name"];
-	$productimage3=$_FILES["productimage3"]["name"];
-//for getting product id
-$query=mysqli_query($con,"select max(id) as pid from products");
-	$result=mysqli_fetch_array($query);
-	 $productid=$result['pid']+1;
-	$dir="productimages/$productid";
-if(!is_dir($dir)){
-		mkdir("productimages/".$productid);
-	}
-
-	move_uploaded_file($_FILES["productimage1"]["tmp_name"],"productimages/$productid/".$_FILES["productimage1"]["name"]);
-	move_uploaded_file($_FILES["productimage2"]["tmp_name"],"productimages/$productid/".$_FILES["productimage2"]["name"]);
-	move_uploaded_file($_FILES["productimage3"]["tmp_name"],"productimages/$productid/".$_FILES["productimage3"]["name"]);
-$sql=mysqli_query($con,"insert into products(category,subCategory,productName,productCompany,productPrice,productDescription,shippingCharge,productAvailability,productImage1,productImage2,productImage3,productPriceBeforeDiscount) values('$category','$subcat','$productname','$productcompany','$productprice','$productdescription','$productscharge','$productavailability','$productimage1','$productimage2','$productimage3','$productpricebd')");
-$_SESSION['msg']="Product Inserted Successfully !!";
-
-}
-
-
-?>
+<?php include('C_Insert_Product.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +28,7 @@ function selectCountry(val) {
 $("#search-box").val(val);
 $("#suggesstion-box").hide();
 }
-</script>	
+</script>
 
 
 </head>
@@ -80,7 +38,7 @@ $("#suggesstion-box").hide();
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -115,7 +73,7 @@ $("#suggesstion-box").hide();
 <label class="control-label" for="basicinput">Category</label>
 <div class="controls">
 <select name="category" class="span8 tip" onChange="getSubcat(this.value);"  required>
-<option value="">Select Category</option> 
+<option value="">Select Category</option>
 <?php $query=mysqli_query($con,"select * from category");
 while($row=mysqli_fetch_array($query))
 {?>
@@ -126,7 +84,7 @@ while($row=mysqli_fetch_array($query))
 </div>
 </div>
 
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Sub Category</label>
 <div class="controls">
@@ -167,7 +125,7 @@ while($row=mysqli_fetch_array($query))
 <label class="control-label" for="basicinput">Product Description</label>
 <div class="controls">
 <textarea  name="productDescription"  placeholder="Enter Product Description" rows="6" class="span8 tip">
-</textarea>  
+</textarea>
 </div>
 </div>
 
@@ -225,9 +183,9 @@ while($row=mysqli_fetch_array($query))
 						</div>
 
 
-	
-						
-						
+
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -251,4 +209,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

@@ -1,29 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-	$pid=intval($_GET['id']);// product id
-if(isset($_POST['submit']))
-{
-	$productname=$_POST['productName'];
-	$productimage1=$_FILES["productimage1"]["name"];
-//$dir="productimages";
-//unlink($dir.'/'.$pimage);
-
-
-	move_uploaded_file($_FILES["productimage1"]["tmp_name"],"productimages/$pid/".$_FILES["productimage1"]["name"]);
-	$sql=mysqli_query($con,"update  products set productImage1='$productimage1' where id='$pid' ");
-$_SESSION['msg']="Product Image Updated Successfully !!";
-
-}
-
-
-?>
+<?php include('C_UpdateImage.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +29,7 @@ function selectCountry(val) {
 $("#search-box").val(val);
 $("#suggesstion-box").hide();
 }
-</script>	
+</script>
 
 
 </head>
@@ -63,7 +39,7 @@ $("#suggesstion-box").hide();
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -87,13 +63,13 @@ $("#suggesstion-box").hide();
 
 			<form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
 
-<?php 
+<?php
 
 $query=mysqli_query($con,"select productName,productImage1 from products where id='$pid'");
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-  
+
 
 
 ?>
@@ -110,7 +86,7 @@ while($row=mysqli_fetch_array($query))
 <div class="control-group">
 <label class="control-label" for="basicinput">Current Product Image1</label>
 <div class="controls">
-<img src="productimages/<?php echo htmlentities($pid);?>/<?php echo htmlentities($row['productImage1']);?>" width="200" height="100"> 
+<img src="productimages/<?php echo htmlentities($pid);?>/<?php echo htmlentities($row['productImage1']);?>" width="200" height="100">
 </div>
 </div>
 
@@ -128,7 +104,7 @@ while($row=mysqli_fetch_array($query))
 
 	<div class="control-group">
 											<div class="controls">
-												<button type="submit" name="submit" class="btn">Update</button>
+												<button type="submit" name="submit1" class="btn">Update</button>
 											</div>
 										</div>
 									</form>
@@ -136,9 +112,9 @@ while($row=mysqli_fetch_array($query))
 						</div>
 
 
-	
-						
-						
+
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -162,4 +138,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

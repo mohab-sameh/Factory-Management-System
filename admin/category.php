@@ -1,32 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-date_default_timezone_set('Asia/Kolkata');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
-if(isset($_POST['submit']))
-{
-	$category=$_POST['category'];
-	$description=$_POST['description'];
-$sql=mysqli_query($con,"insert into category(categoryName,categoryDescription) values('$category','$description')");
-$_SESSION['msg']="Category Created !!";
-
-}
-
-if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from category where id = '".$_GET['id']."'");
-                  $_SESSION['delmsg']="Category deleted !!";
-		  }
-
-?>
+<?php include('C_Category.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +18,7 @@ if(isset($_GET['del']))
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -75,7 +48,7 @@ if(isset($_GET['del']))
 									<br />
 
 			<form class="form-horizontal row-fluid" name="Category" method="post" >
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Category Name</label>
 <div class="controls">
@@ -123,7 +96,7 @@ if(isset($_GET['del']))
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-?>									
+?>
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($row['categoryName']);?></td>
@@ -135,13 +108,13 @@ while($row=mysqli_fetch_array($query))
 											<a href="category.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
 										</tr>
 										<?php $cnt=$cnt+1; } ?>
-										
+
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -165,4 +138,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

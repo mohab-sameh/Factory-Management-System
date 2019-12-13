@@ -1,27 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-date_default_timezone_set('Asia/Kolkata');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
-if(isset($_POST['submit']))
-{
-	$category=$_POST['category'];
-	$description=$_POST['description'];
-	$id=intval($_GET['id']);
-$sql=mysqli_query($con,"update category set categoryName='$category',categoryDescription='$description',updationDate='$currentTime' where id='$id'");
-$_SESSION['msg']="Category Updated !!";
-
-}
-
-?>
+<?php include('C_Edit_Category.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +18,7 @@ $_SESSION['msg']="Category Updated !!";
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -67,7 +45,7 @@ $id=intval($_GET['id']);
 $query=mysqli_query($con,"select * from category where id='$id'");
 while($row=mysqli_fetch_array($query))
 {
-?>									
+?>
 <div class="control-group">
 <label class="control-label" for="basicinput">Category Name</label>
 <div class="controls">
@@ -82,7 +60,7 @@ while($row=mysqli_fetch_array($query))
 												<textarea class="span8" name="description" rows="5"><?php echo  htmlentities($row['categoryDescription']);?></textarea>
 											</div>
 										</div>
-									<?php } ?>	
+									<?php } ?>
 
 	<div class="control-group">
 											<div class="controls">
@@ -94,10 +72,10 @@ while($row=mysqli_fetch_array($query))
 						</div>
 
 
-						
 
-						
-						
+
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -121,4 +99,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

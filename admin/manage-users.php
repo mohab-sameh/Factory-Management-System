@@ -1,22 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-date_default_timezone_set('Asia/Kolkata');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from products where id = '".$_GET['id']."'");
-                  $_SESSION['delmsg']="Product deleted !!";
-		  }
-
-?>
+<?php include('C_Mnanage_Users.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +18,7 @@ if(isset($_GET['del']))
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -54,7 +37,7 @@ if(isset($_GET['del']))
 
 									<br />
 
-							
+
 								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
 									<thead>
 										<tr>
@@ -65,7 +48,7 @@ if(isset($_GET['del']))
 											<th>Shippping Address/City/State/Pincode </th>
 											<th>Billing Address/City/State/Pincode </th>
 											<th>Reg. Date </th>
-										
+
 										</tr>
 									</thead>
 									<tbody>
@@ -74,7 +57,7 @@ if(isset($_GET['del']))
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-?>									
+?>
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
 											<td><?php echo htmlentities($row['name']);?></td>
@@ -83,15 +66,15 @@ while($row=mysqli_fetch_array($query))
 											<td><?php echo htmlentities($row['shippingAddress'].",".$row['shippingCity'].",".$row['shippingState']."-".$row['shippingPincode']);?></td>
 											<td><?php echo htmlentities($row['billingAddress'].",".$row['billingCity'].",".$row['billingState']."-".$row['billingPincode']);?></td>
 											<td><?php echo htmlentities($row['regDate']);?></td>
-											
+
 										<?php $cnt=$cnt+1; } ?>
-										
+
 								</table>
 							</div>
-						</div>						
+						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -115,4 +98,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

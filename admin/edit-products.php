@@ -1,32 +1,5 @@
 
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-	$pid=intval($_GET['id']);// product id
-if(isset($_POST['submit']))
-{
-	$category=$_POST['category'];
-	$subcat=$_POST['subcategory'];
-	$productname=$_POST['productName'];
-	$productcompany=$_POST['productCompany'];
-	$productprice=$_POST['productprice'];
-	$productpricebd=$_POST['productpricebd'];
-	$productdescription=$_POST['productDescription'];
-	$productscharge=$_POST['productShippingcharge'];
-	$productavailability=$_POST['productAvailability'];
-	
-$sql=mysqli_query($con,"update  products set category='$category',subCategory='$subcat',productName='$productname',productCompany='$productcompany',productPrice='$productprice',productDescription='$productdescription',shippingCharge='$productscharge',productAvailability='$productavailability',productPriceBeforeDiscount='$productpricebd' where id='$pid' ");
-$_SESSION['msg']="Product Updated Successfully !!";
-
-}
-
-
-?>
+<?php include('C_Edit_Products.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +29,7 @@ function selectCountry(val) {
 $("#search-box").val(val);
 $("#suggesstion-box").hide();
 }
-</script>	
+</script>
 
 
 </head>
@@ -66,7 +39,7 @@ $("#suggesstion-box").hide();
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -97,13 +70,13 @@ $("#suggesstion-box").hide();
 
 			<form class="form-horizontal row-fluid" name="insertproduct" method="post" enctype="multipart/form-data">
 
-<?php 
+<?php
 
 $query=mysqli_query($con,"select products.*,category.categoryName as catname,category.id as cid,subcategory.subcategory as subcatname,subcategory.id as subcatid from products join category on category.id=products.category join subcategory on subcategory.id=products.subCategory where products.id='$pid'");
 $cnt=1;
 while($row=mysqli_fetch_array($query))
 {
-  
+
 
 
 ?>
@@ -113,7 +86,7 @@ while($row=mysqli_fetch_array($query))
 <label class="control-label" for="basicinput">Category</label>
 <div class="controls">
 <select name="category" class="span8 tip" onChange="getSubcat(this.value);"  required>
-<option value="<?php echo htmlentities($row['cid']);?>"><?php echo htmlentities($row['catname']);?></option> 
+<option value="<?php echo htmlentities($row['cid']);?>"><?php echo htmlentities($row['catname']);?></option>
 <?php $query=mysqli_query($con,"select * from category");
 while($rw=mysqli_fetch_array($query))
 {
@@ -130,7 +103,7 @@ while($rw=mysqli_fetch_array($query))
 </div>
 </div>
 
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Sub Category</label>
 <div class="controls">
@@ -174,7 +147,7 @@ while($rw=mysqli_fetch_array($query))
 <div class="controls">
 <textarea  name="productDescription"  placeholder="Enter Product Description" rows="6" class="span8 tip">
 <?php echo htmlentities($row['productDescription']);?>
-</textarea>  
+</textarea>
 </div>
 </div>
 
@@ -232,9 +205,9 @@ while($rw=mysqli_fetch_array($query))
 						</div>
 
 
-	
-						
-						
+
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -258,4 +231,3 @@ while($rw=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>

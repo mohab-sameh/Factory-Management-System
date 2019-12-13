@@ -1,10 +1,5 @@
-<?php
-session_start();
-$_SESSION['alogin']=="";
-session_unset();
-//session_destroy();
-$_SESSION['errmsg']="You have successfully logout";
-?>
+
+<?php include('C_Logout.php');?>
 <script language="javascript">
 document.location="index.php";
 </script>

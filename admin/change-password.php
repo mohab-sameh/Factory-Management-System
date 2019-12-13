@@ -1,31 +1,4 @@
-
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{
-date_default_timezone_set('Asia/Kolkata');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-
-
-if(isset($_POST['submit']))
-{
-$sql=mysqli_query($con,"SELECT password FROM  admin where password='".md5($_POST['password'])."' && username='".$_SESSION['alogin']."'");
-$num=mysqli_fetch_array($sql);
-if($num>0)
-{
- $con=mysqli_query($con,"update admin set password='".md5($_POST['newpassword'])."', updationDate='$currentTime' where username='".$_SESSION['alogin']."'");
-$_SESSION['msg']="Password Changed Successfully !!";
-}
-else
-{
-$_SESSION['msg']="Old Password not match !!";
-}
-}
-?>
+<?php include('C_Change_Password.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +47,7 @@ return true;
 	<div class="wrapper">
 		<div class="container">
 			<div class="row">
-<?php include('include/sidebar.php');?>				
+<?php include('include/sidebar.php');?>
 			<div class="span9">
 					<div class="content">
 
@@ -94,7 +67,7 @@ return true;
 									<br />
 
 			<form class="form-horizontal row-fluid" name="chngpwd" method="post" onSubmit="return valid();">
-									
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Current Password</label>
 <div class="controls">
@@ -120,7 +93,7 @@ return true;
 
 
 
-										
+
 
 										<div class="control-group">
 											<div class="controls">
@@ -131,8 +104,8 @@ return true;
 							</div>
 						</div>
 
-						
-						
+
+
 					</div><!--/.content-->
 				</div><!--/.span9-->
 			</div>
@@ -146,4 +119,3 @@ return true;
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 </body>
-<?php } ?>
