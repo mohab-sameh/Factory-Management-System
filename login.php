@@ -1,9 +1,8 @@
 
 
 <?php
-require_once 'C_Login.php';
-?>
 
+include('C_Login.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
