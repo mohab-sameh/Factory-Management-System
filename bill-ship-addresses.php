@@ -1,42 +1,5 @@
 <?php
-session_start();
-//error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:index.php');
-}
-else{
-	// code for billing address updation
-	if(isset($_POST['update']))
-	{
-		$baddress=$_POST['billingaddress'];
-		$bstate=$_POST['bilingstate'];
-		$bcity=$_POST['billingcity'];
-		$bpincode=$_POST['billingpincode'];
-		$query=mysqli_query($con,"update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id='".$_SESSION['id']."'");
-		if($query)
-		{
-echo "<script>alert('Billing Address has been updated');</script>";
-		}
-	}
-
-
-// code for Shipping address updation
-	if(isset($_POST['shipupdate']))
-	{
-		$saddress=$_POST['shippingaddress'];
-		$sstate=$_POST['shippingstate'];
-		$scity=$_POST['shippingcity'];
-		$spincode=$_POST['shippingpincode'];
-		$query=mysqli_query($con,"update users set shippingAddress='$saddress',shippingState='$sstate',shippingCity='$scity',shippingPincode='$spincode' where id='".$_SESSION['id']."'");
-		if($query)
-		{
-echo "<script>alert('Shipping Address has been updated');</script>";
-		}
-	}
-
-
+include('C_BillShipAddress.php')
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +18,7 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	    
+
 	    <!-- Customizable CSS -->
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -127,7 +90,7 @@ echo "<script>alert('Shipping Address has been updated');</script>";
 
 		<!-- panel-body  -->
 	    <div class="panel-body">
-			<div class="row">		
+			<div class="row">
 				<div class="col-md-12 col-sm-12 already-registered-login">
 
 <?php
@@ -161,10 +124,10 @@ while($row=mysqli_fetch_array($query))
 					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
 					</form>
 					<?php } ?>
-				</div>	
-				<!-- already-registered-login -->		
+				</div>
+				<!-- already-registered-login -->
 
-			</div>			
+			</div>
 		</div>
 		<!-- panel-body  -->
 
@@ -182,7 +145,7 @@ while($row=mysqli_fetch_array($query))
 						    </div>
 						    <div id="collapseTwo" class="panel-collapse collapse">
 						      <div class="panel-body">
-						     
+
 				<?php
 $query=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
 while($row=mysqli_fetch_array($query))
@@ -222,7 +185,7 @@ while($row=mysqli_fetch_array($query))
 						    </div>
 					  	</div>
 					  	<!-- checkout-step-02  -->
-					  	
+
 					</div><!-- /.checkout-steps -->
 				</div>
 			<?php include('includes/myaccount-sidebar.php');?>
@@ -234,12 +197,12 @@ while($row=mysqli_fetch_array($query))
 </div>
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -250,11 +213,11 @@ while($row=mysqli_fetch_array($query))
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
