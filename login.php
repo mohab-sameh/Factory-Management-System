@@ -1,6 +1,8 @@
 
 
-<?php include('/CONTROLLERS/C_Login.php'); ?>
+<?php
+
+include(__DIR__.'/CONTROLLERS/C_Login.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
