@@ -1,20 +1,5 @@
-<?php 
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:login.php');
-}
-else{
-	if (isset($_POST['submit'])) {
+<?php include('C_PaymentMethod.php') ?>
 
-		mysqli_query($con,"update orders set 	paymentMethod='".$_POST['paymethod']."' where userId='".$_SESSION['id']."' and paymentMethod is null ");
-		unset($_SESSION['cart']);
-		header('location:order-history.php');
-
-	}
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -49,8 +34,8 @@ else{
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
 	</head>
     <body class="cnt-home">
-	
-		
+
+
 <header class="header-style-1">
 <?php include('includes/top-header.php');?>
 <?php include('includes/main-header.php');?>
@@ -96,17 +81,17 @@ else{
 	     <input type="radio" name="paymethod" value="Internet Banking"> Internet Banking
 	     <input type="radio" name="paymethod" value="Debit / Credit card"> Debit / Credit card <br /><br />
 	     <input type="submit" value="submit" name="submit" class="btn btn-primary">
-	    	
 
-	    </form>		
+
+	    </form>
 		</div>
 		<!-- panel-body  -->
 
 	</div><!-- row -->
 </div>
 <!-- checkout-step-01  -->
-					  
-					  	
+
+
 					</div><!-- /.checkout-steps -->
 				</div>
 			</div><!-- /.row -->
@@ -117,12 +102,12 @@ else{
 </div><!-- /.body-content -->
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -133,11 +118,11 @@ else{
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
@@ -151,7 +136,7 @@ else{
 	</script>
 	<!-- For demo purposes – can be removed on production : End -->
 
-	
+
 
 </body>
 </html>
