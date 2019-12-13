@@ -1,5 +1,5 @@
 
-
+<?php include('C_Delivered_Orders.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

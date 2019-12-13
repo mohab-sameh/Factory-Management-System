@@ -1,5 +1,5 @@
 
-
+<?php include('C_Manage_Products.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,4 +99,3 @@ while($row=mysqli_fetch_array($query))
 		} );
 	</script>
 </body>
-<?php } ?>
