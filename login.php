@@ -2,7 +2,7 @@
 
 <?php
 
-include(__DIR__.'/CONTROLLERS/C_Login.php'); ?>
+include('C_Login.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
