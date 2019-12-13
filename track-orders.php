@@ -1,8 +1,4 @@
-<?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-?>
+<?php include('C_TrackOrders.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -36,7 +32,7 @@ include('includes/config.php');
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
 	</head>
     <body class="cnt-home">
-	
+
 <header class="header-style-1">
 
 	<!-- ============================================== TOP MENU ============================================== -->
@@ -77,23 +73,23 @@ include('includes/config.php');
 		    <input type="email" class="form-control unicase-form-control text-input" name="email" id="exampleBillingEmail1" >
 		</div>
 	  	<button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button">Track</button>
-	</form>	
+	</form>
 </div>			</div><!-- /.row -->
 		</div><!-- /.sigin-in-->
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-<div 
+<div
 
 <?php echo include('includes/brands-slider.php');?>
 </div>
 </div>
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -104,11 +100,11 @@ include('includes/config.php');
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
@@ -122,7 +118,7 @@ include('includes/config.php');
 	</script>
 	<!-- For demo purposes – can be removed on production : End -->
 
-	
+
 
 </body>
 </html>

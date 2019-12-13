@@ -1,4 +1,4 @@
-<<?php include('C_ProductDetails.php'); ?>
+<?php include('C_ProductDetails.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

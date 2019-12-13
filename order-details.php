@@ -1,8 +1,4 @@
-<?php 
-session_start();
-error_reporting(0);
-include('includes/config.php');
-?>
+<?php include('C_OrderDetails.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +50,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 
 	</head>
     <body class="cnt-home">
-	
-		
-	
+
+
+
 		<!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1">
 <?php include('includes/top-header.php');?>
@@ -81,7 +77,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 			<div class="shopping-cart">
 				<div class="col-md-12 col-sm-12 shopping-cart-table ">
 	<div class="table-responsive">
-<form name="cart" method="post">	
+<form name="cart" method="post">
 
 		<table class="table table-bordered">
 			<thead>
@@ -89,7 +85,7 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					<th class="cart-romove item">#</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
-			
+
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
 					<th class="cart-total item">Grandtotal</th>
@@ -98,9 +94,9 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
 					<th class="cart-total last-item">Action</th>
 				</tr>
 			</thead><!-- /thead -->
-			
+
 			<tbody>
-<?php 
+<?php
 $orderid=$_POST['orderid'];
 $email=$_POST['email'];
 $ret = mysqli_query($con,"select t.email,t.id from (select usr.email,odrs.id from users as usr join orders as odrs on usr.id=odrs.userId) as t where  t.email='$email' and (t.id='$orderid')");
@@ -122,17 +118,17 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-name-info">
 						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid'];?>">
 						<?php echo $row['pname'];?></a></h4>
-						
-						
+
+
 					</td>
 					<td class="cart-product-quantity">
-						<?php echo $qty=$row['qty']; ?>   
+						<?php echo $qty=$row['qty']; ?>
 		            </td>
 					<td class="cart-product-sub-total"><?php echo $price=$row['pprice']; ?>  </td>
 					<td class="cart-product-grand-total"><?php echo $qty*$price;?></td>
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
-					
+
 					<td>
  <a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
 					Track</td>
@@ -142,7 +138,7 @@ while($row=mysqli_fetch_array($query))
 				<?php } ?>
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
-		
+
 	</div>
 </div>
 
@@ -156,12 +152,12 @@ while($row=mysqli_fetch_array($query))
 <?php include('includes/footer.php');?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -172,11 +168,11 @@ while($row=mysqli_fetch_array($query))
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');

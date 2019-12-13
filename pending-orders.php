@@ -1,4 +1,4 @@
-<<?php include("C_PendingOrders.php") ?>
+<?php include("C_PendingOrders.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -198,4 +198,3 @@ while($row=mysqli_fetch_array($query))
 	<!-- For demo purposes – can be removed on production : End -->
 </body>
 </html>
-<?php } ?>

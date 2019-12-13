@@ -1,40 +1,4 @@
-<?php
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:index.php');
-}
-else{
-// Code forProduct deletion from  wishlist	
-$wid=intval($_GET['del']);
-if(isset($_GET['del']))
-{
-$query=mysqli_query($con,"delete from wishlist where id='$wid'");
-}
-
-
-if(isset($_GET['action']) && $_GET['action']=="add"){
-	$id=intval($_GET['id']);
-	$query=mysqli_query($con,"delete from wishlist where productId='$id'");
-	if(isset($_SESSION['cart'][$id])){
-		$_SESSION['cart'][$id]['quantity']++;
-	}else{
-		$sql_p="SELECT * FROM products WHERE id={$id}";
-		$query_p=mysqli_query($con,$sql_p);
-		if(mysqli_num_rows($query_p)!=0){
-			$row_p=mysqli_fetch_array($query_p);
-			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);	
-header('location:my-wishlist.php');
-}
-		else{
-			$message="Product ID is invalid";
-		}
-	}
-}
-
-?>
+<?php include('C_MyWishList.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -49,7 +13,7 @@ header('location:my-wishlist.php');
 
 	    <title>My Wishlist</title>
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	    
+
 	    <!-- Customizable CSS -->
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -71,11 +35,11 @@ header('location:my-wishlist.php');
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<!-- Demo Purpose Only. Should be removed in production : END -->
 
-		
+
 		<!-- Icons/Glyphs -->
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-        <!-- Fonts --> 
+        <!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
 	</head>
@@ -144,7 +108,7 @@ $num=mysqli_num_rows($rt);
 							<span class="review">( <?php echo htmlentities($num);?> Reviews )</span>
 						</div>
 						<?php } ?>
-						<div class="price">Rs. 
+						<div class="price">Rs.
 							<?php echo htmlentities($row['pprice']);?>.00
 							<span>$900.00</span>
 						</div>
@@ -173,12 +137,12 @@ $num=mysqli_num_rows($rt);
 <?php include('includes/footer.php');?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -189,11 +153,11 @@ $num=mysqli_num_rows($rt);
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
@@ -207,4 +171,3 @@ $num=mysqli_num_rows($rt);
 	</script>
 </body>
 </html>
-<?php } ?>

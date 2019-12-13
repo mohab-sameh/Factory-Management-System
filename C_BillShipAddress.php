@@ -35,5 +35,6 @@ echo "<script>alert('Billing Address has been updated');</script>";
 echo "<script>alert('Shipping Address has been updated');</script>";
 		}
 	}
+}
 
 ?>
