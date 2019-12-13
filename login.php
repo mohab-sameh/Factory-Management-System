@@ -1,6 +1,9 @@
 
 
-<?php include('/CONTROLLERS/C_Login.php'); ?>
+<?php
+require_once 'C_Login.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
