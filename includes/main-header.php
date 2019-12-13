@@ -112,7 +112,7 @@ if(!empty($_SESSION['cart'])){
 
 				<div class="clearfix"></div>
 
-				<a href="my-cart.php" class="btn btn-upper btn-primary btn-block m-t-20">My Cart</a>
+				<a href="V_MyCart.php" class="btn btn-upper btn-primary btn-block m-t-20">My Cart</a>
 			</div><!-- /.cart-total-->
 
 

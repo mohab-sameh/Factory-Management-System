@@ -2,9 +2,16 @@
 
 session_start();
 error_reporting(0);
+
+#require_once 'M_Products.php';
+#require_once 'V_MyCart.php';
+
 require_once 'DB.php';
 $db = DB::getInstance();
 $con = $db->get_Connecion();
+
+
+
 if(isset($_POST['submit'])){
 		if(!empty($_SESSION['cart'])){
 		foreach($_POST['quantity'] as $key => $val){
@@ -56,6 +63,10 @@ header('location:payment-method.php');
 }
 }
 }
+
+
+
+
 
 
 ?>
