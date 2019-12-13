@@ -1,6 +1,8 @@
 <?php
 session_start();
-include("includes/config.php");
+require_once 'DB.php';
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 
 $_SESSION['login']=="";
 date_default_timezone_set('Asia/Kolkata');
