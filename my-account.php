@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['login'])==0)
-    {   
+    {
 header('location:index.php');
 }
 else{
@@ -17,7 +17,7 @@ else{
 echo "<script>alert('Your info has been updated');</script>";
 		}
 	}
-
+}
 
 date_default_timezone_set('Asia/Kolkata');// change according timezone
 $currentTime = date( 'd-m-Y h:i:s A', time () );
@@ -55,7 +55,7 @@ else
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	    
+
 	    <!-- Customizable CSS -->
 	    <link rel="stylesheet" href="assets/css/main.css">
 	    <link rel="stylesheet" href="assets/css/green.css">
@@ -157,7 +157,7 @@ return true;
 
 		<!-- panel-body  -->
 	    <div class="panel-body">
-			<div class="row">		
+			<div class="row">
 <h4>Personal info</h4>
 				<div class="col-md-12 col-sm-12 already-registered-login">
 
@@ -186,10 +186,10 @@ while($row=mysqli_fetch_array($query))
 					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
 					</form>
 					<?php } ?>
-				</div>	
-				<!-- already-registered-login -->		
+				</div>
+				<!-- already-registered-login -->
 
-			</div>			
+			</div>
 		</div>
 		<!-- panel-body  -->
 
@@ -207,7 +207,7 @@ while($row=mysqli_fetch_array($query))
 						    </div>
 						    <div id="collapseTwo" class="panel-collapse collapse">
 						      <div class="panel-body">
-						     
+
 					<form class="register-form" role="form" method="post" name="chngpwd" onSubmit="return valid();">
 <div class="form-group">
 					    <label class="info-title" for="Current Password">Current Password<span>*</span></label>
@@ -225,7 +225,7 @@ while($row=mysqli_fetch_array($query))
 					    <input type="password" class="form-control unicase-form-control text-input" id="cnfpass" name="cnfpass" required="required" >
 					  </div>
 					  <button type="submit" name="submit" class="btn-upper btn btn-primary checkout-page-button">Change </button>
-					</form> 
+					</form>
 
 
 
@@ -234,7 +234,7 @@ while($row=mysqli_fetch_array($query))
 						    </div>
 					  	</div>
 					  	<!-- checkout-step-02  -->
-					  	
+
 					</div><!-- /.checkout-steps -->
 				</div>
 			<?php include('includes/myaccount-sidebar.php');?>
@@ -246,12 +246,12 @@ while($row=mysqli_fetch_array($query))
 </div>
 <?php include('includes/footer.php');?>
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -262,11 +262,11 @@ while($row=mysqli_fetch_array($query))
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
@@ -280,4 +280,3 @@ while($row=mysqli_fetch_array($query))
 	</script>
 </body>
 </html>
-<?php } ?>
