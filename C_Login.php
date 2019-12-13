@@ -1,10 +1,9 @@
 <?php
 session_start();
 error_reporting(0);
-require_once 'includes/config.php';
-
-
-
+require_once 'DB.php';
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 // Code user Registration
 if(isset($_POST['change']))
 {
