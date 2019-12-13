@@ -1,7 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
-include('../includes/config.php');
+require_once 'includes/config.php';
+
 // Code user Registration
 if(isset($_POST['submit']))
 {
