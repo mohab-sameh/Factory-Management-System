@@ -44,8 +44,8 @@ $user->contactNo = $row['contactno'];
       $user->billingState = $row['billingstate'];
       $user->billingCity = $row['billingcity'];
         $user->billingPinCode =  $row['billingpincode'];
-        $user->regDate = = $row['regdate'];
-          $user->updateDate = = $row['updationdate'];
+        $user->regDate =  $row['regdate'];
+          $user->updateDate =  $row['updationdate'];
   return $user;
 }
 static function  LogintUser($email,$password)
