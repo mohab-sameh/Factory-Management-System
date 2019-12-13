@@ -2,7 +2,9 @@
 session_start();
 error_reporting(0);
 
-include('includes/config.php');
+require_once 'DB.php';
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 
 
 if(isset($_GET['action']) && $_GET['action']=="add"){
