@@ -15,7 +15,7 @@ else{
 		header('location:order-history.php');
 
 	}
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
