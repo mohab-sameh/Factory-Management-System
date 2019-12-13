@@ -1,5 +1,7 @@
 <?php
-include('include/config.php');
+include('../DB.php');
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 if(!empty($_POST["cat_id"]))
 {
  $id=intval($_POST['cat_id']);
