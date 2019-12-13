@@ -1,60 +1,6 @@
-<?php 
-session_start();
-error_reporting(0);
-include('includes/config.php');
-if(isset($_POST['submit'])){
-		if(!empty($_SESSION['cart'])){
-		foreach($_POST['quantity'] as $key => $val){
-			if($val==0){
-				unset($_SESSION['cart'][$key]);
-			}else{
-				$_SESSION['cart'][$key]['quantity']=$val;
+<?php
 
-			}
-		}
-			echo "<script>alert('Your Cart hasbeen Updated');</script>";
-		}
-	}
-// Code for Remove a Product from Cart
-if(isset($_POST['remove_code']))
-	{
-
-if(!empty($_SESSION['cart'])){
-		foreach($_POST['remove_code'] as $key){
-			
-				unset($_SESSION['cart'][$key]);
-		}
-			echo "<script>alert('Your Cart has been Updated');</script>";
-	}
-}
-// code for insert product in order table
-
-
-if(isset($_POST['ordersubmit'])) 
-{
-	
-if(strlen($_SESSION['login'])==0)
-    {   
-header('location:login.php');
-}
-else{
-
-	$quantity=$_POST['quantity'];
-	$pdd=$_SESSION['pid'];
-	$value=array_combine($pdd,$quantity);
-
-
-		foreach($value as $qty=> $val34){
-
-
-
-mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$_SESSION['id']."','$qty','$val34')");
-header('location:payment-method.php');
-}
-}
-}
-
-
+include('C_MyCart.php')
 ?>
 
 <!DOCTYPE html>
@@ -91,13 +37,13 @@ header('location:payment-method.php');
 		<link href="assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
 		<!-- Demo Purpose Only. Should be removed in production : END -->
 
-		
+
 		<!-- Icons/Glyphs -->
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
-        <!-- Fonts --> 
+        <!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		
+
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -109,9 +55,9 @@ header('location:payment-method.php');
 
 	</head>
     <body class="cnt-home">
-	
-		
-	
+
+
+
 		<!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1">
 <?php include('includes/top-header.php');?>
@@ -136,7 +82,7 @@ header('location:payment-method.php');
 			<div class="shopping-cart">
 				<div class="col-md-12 col-sm-12 shopping-cart-table ">
 	<div class="table-responsive">
-<form name="cart" method="post">	
+<form name="cart" method="post">
 <?php
 if(!empty($_SESSION['cart'])){
 	?>
@@ -146,7 +92,7 @@ if(!empty($_SESSION['cart'])){
 					<th class="cart-romove item">Remove</th>
 					<th class="cart-description item">Image</th>
 					<th class="cart-product-name item">Product Name</th>
-			
+
 					<th class="cart-qty item">Quantity</th>
 					<th class="cart-sub-total item">Price Per unit</th>
 					<th class="cart-sub-total item">Shipping Charge</th>
@@ -214,7 +160,7 @@ $num=mysqli_num_rows($rt);
 								<?php } ?>
 							</div>
 						</div><!-- /.row -->
-						
+
 					</td>
 					<td class="cart-product-quantity">
 						<div class="quant-input">
@@ -223,7 +169,7 @@ $num=mysqli_num_rows($rt);
 				                  <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 				                </div>
 				             <input type="text" value="<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?>" name="quantity[<?php echo $row['id']; ?>]">
-				             
+
 			              </div>
 		            </td>
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "Rs"." ".$row['productPrice']; ?>.00</span></td>
@@ -235,10 +181,10 @@ $num=mysqli_num_rows($rt);
 				<?php } }
 $_SESSION['pid']=$pdtid;
 				?>
-				
+
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
-		
+
 	</div>
 </div><!-- /.shopping-cart-table -->			<div class="col-md-4 col-sm-12 estimate-ship-tax">
 	<table class="table table-bordered">
@@ -262,9 +208,9 @@ while ($rt=mysqli_fetch_array($qry)) {
 }
 
 						?>
-		
+
 						</div>
-					
+
 					</td>
 				</tr>
 		</tbody><!-- /tbody -->
@@ -293,9 +239,9 @@ while ($rt=mysqli_fetch_array($qry)) {
 }
 
 						?>
-		
+
 						</div>
-					
+
 					</td>
 				</tr>
 		</tbody><!-- /tbody -->
@@ -306,7 +252,7 @@ while ($rt=mysqli_fetch_array($qry)) {
 		<thead>
 			<tr>
 				<th>
-					
+
 					<div class="cart-grand-total">
 						Grand Total<span class="inner-left-md"><?php echo $_SESSION['tp']="$totalprice". ".00"; ?></span>
 					</div>
@@ -318,7 +264,7 @@ while ($rt=mysqli_fetch_array($qry)) {
 					<td>
 						<div class="cart-checkout-btn pull-right">
 							<button type="submit" name="ordersubmit" class="btn btn-primary">PROCCED TO CHEKOUT</button>
-						
+
 						</div>
 					</td>
 				</tr>
@@ -328,7 +274,7 @@ while ($rt=mysqli_fetch_array($qry)) {
 echo "Your shopping Cart is empty";
 		}?>
 </div>			</div>
-		</div> 
+		</div>
 		</form>
 <?php echo include('includes/brands-slider.php');?>
 </div>
@@ -336,12 +282,12 @@ echo "Your shopping Cart is empty";
 <?php include('includes/footer.php');?>
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap.min.js"></script>
-	
+
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 	<script src="assets/js/owl.carousel.min.js"></script>
-	
+
 	<script src="assets/js/echo.min.js"></script>
 	<script src="assets/js/jquery.easing-1.3.min.js"></script>
 	<script src="assets/js/bootstrap-slider.min.js"></script>
@@ -352,11 +298,11 @@ echo "Your shopping Cart is empty";
 	<script src="assets/js/scripts.js"></script>
 
 	<!-- For demo purposes – can be removed on production -->
-	
+
 	<script src="switchstylesheet/switchstylesheet.js"></script>
-	
+
 	<script>
-		$(document).ready(function(){ 
+		$(document).ready(function(){
 			$(".changecolor").switchstylesheet( { seperator:"color"} );
 			$('.show-theme-options').click(function(){
 				$(this).parent().toggleClass('open');
