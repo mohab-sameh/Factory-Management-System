@@ -30,6 +30,7 @@ header("location:http://$host$uri/$extra");
 $_SESSION['errmsg']="Invalid email id or Contact no";
 exit();
 }
+}
 if(isset($_POST['submit']))
 {
 $name=$_POST['fullname'];
