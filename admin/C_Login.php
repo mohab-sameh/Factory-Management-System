@@ -1,7 +1,9 @@
 <?php
 session_start();
 error_reporting(0);
-include("include/config.php");
+require_once '../DB.php';
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 if(isset($_POST['submit']))
 {
 	$username=$_POST['username'];
