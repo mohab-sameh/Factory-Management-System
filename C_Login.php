@@ -8,6 +8,8 @@ $db = DB::getInstance();
 $con = $db->get_Connecion();
 $user = new User();
 // Code user Registration
+
+
 if(isset($_POST['change']))
 {
    $email=$_POST['email'];
