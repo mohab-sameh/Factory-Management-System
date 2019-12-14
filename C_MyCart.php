@@ -6,11 +6,14 @@ error_reporting(0);
 #require_once 'M_Products.php';
 #require_once 'V_MyCart.php';
 
-require_once 'DB.php';
+
+include('M_User.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 
 
+
+$user = User::GetWithID($_SESSION['id']);
 
 if(isset($_POST['submit'])){
 		if(!empty($_SESSION['cart'])){

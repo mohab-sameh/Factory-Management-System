@@ -199,14 +199,11 @@ $_SESSION['pid']=$pdtid;
 				<tr>
 					<td>
 						<div class="form-group">
-						<?php $qry=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while ($rt=mysqli_fetch_array($qry)) {
-	echo htmlentities($rt['shippingAddress'])."<br />";
-	echo htmlentities($rt['shippingCity'])."<br />";
-	echo htmlentities($rt['shippingState']);
-	echo htmlentities($rt['shippingPincode']);
-}
-
+						<?php
+	echo htmlentities($user->shippingAddress)."<br />";
+	echo htmlentities($user->shippingCity)."<br />";
+	echo htmlentities($user->shippingState);
+	echo htmlentities($user->shippingPinCode);
 						?>
 
 						</div>
@@ -230,13 +227,11 @@ while ($rt=mysqli_fetch_array($qry)) {
 				<tr>
 					<td>
 						<div class="form-group">
-						<?php $qry=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while ($rt=mysqli_fetch_array($qry)) {
-	echo htmlentities($rt['billingAddress'])."<br />";
-	echo htmlentities($rt['billingCity'])."<br />";
-	echo htmlentities($rt['billingState']);
-	echo htmlentities($rt['billingPincode']);
-}
+						<?php
+						echo htmlentities($user->shippingAddress)."<br />";
+						echo htmlentities($user->shippingCity)."<br />";
+						echo htmlentities($user->shippingState);
+						echo htmlentities($user->shippingPinCode);
 
 						?>
 
