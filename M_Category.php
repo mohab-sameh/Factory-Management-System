@@ -83,16 +83,6 @@ static function updateCategory($categoryName, $categoryDescription)
     return $query;
 }
 
-
-
-
-
-
-
-
-
-
-
 static function getAllCategories()
 {
 
