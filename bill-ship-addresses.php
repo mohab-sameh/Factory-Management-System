@@ -93,37 +93,32 @@ include('C_BillShipAddress.php')
 			<div class="row">
 				<div class="col-md-12 col-sm-12 already-registered-login">
 
-<?php
-$query=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while($row=mysqli_fetch_array($query))
-{
-?>
 
 					<form class="register-form" role="form" method="post">
 <div class="form-group">
 					    <label class="info-title" for="Billing Address">Billing Address<span>*</span></label>
-					    <textarea class="form-control unicase-form-control text-input" " name="billingaddress" required="required"><?php echo $row['billingAddress'];?></textarea>
+					    <textarea class="form-control unicase-form-control text-input" " name="billingaddress" required="required"><?php echo $user->billingState;?></textarea>
 					  </div>
 
 
 
 						<div class="form-group">
 					    <label class="info-title" for="Billing State ">Billing State  <span>*</span></label>
-			 <input type="text" class="form-control unicase-form-control text-input" id="bilingstate" name="bilingstate" value="<?php echo $row['billingState'];?>" required>
+			 <input type="text" class="form-control unicase-form-control text-input" id="bilingstate" name="bilingstate" value="<?php echo $user->billingState;?>" required>
 					  </div>
 					  <div class="form-group">
 					    <label class="info-title" for="Billing City">Billing City <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="billingcity" name="billingcity" required="required" value="<?php echo $row['billingCity'];?>" >
+					    <input type="text" class="form-control unicase-form-control text-input" id="billingcity" name="billingcity" required="required" value="<?php echo $user->billingCity ;?>" >
 					  </div>
  <div class="form-group">
 					    <label class="info-title" for="Billing Pincode">Billing Pincode <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="billingpincode" name="billingpincode" required="required" value="<?php echo $row['billingPincode'];?>" >
+					    <input type="text" class="form-control unicase-form-control text-input" id="billingpincode" name="billingpincode" required="required" value="<?php echo $user->billingPinCode ;?>" >
 					  </div>
 
 
 					  <button type="submit" name="update" class="btn-upper btn btn-primary checkout-page-button">Update</button>
 					</form>
-					<?php } ?>
+
 				</div>
 				<!-- already-registered-login -->
 
@@ -146,37 +141,33 @@ while($row=mysqli_fetch_array($query))
 						    <div id="collapseTwo" class="panel-collapse collapse">
 						      <div class="panel-body">
 
-				<?php
-$query=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while($row=mysqli_fetch_array($query))
-{
-?>
+
 
 					<form class="register-form" role="form" method="post">
 <div class="form-group">
 					    <label class="info-title" for="Shipping Address">Shipping Address<span>*</span></label>
-					    <textarea class="form-control unicase-form-control text-input" " name="shippingaddress" required="required"><?php echo $row['shippingAddress'];?></textarea>
+					    <textarea class="form-control unicase-form-control text-input" " name="shippingaddress" required="required"><?php echo $user->shippingAddress;?></textarea>
 					  </div>
 
 
 
 						<div class="form-group">
 					    <label class="info-title" for="Billing State ">Shipping State  <span>*</span></label>
-			 <input type="text" class="form-control unicase-form-control text-input" id="shippingstate" name="shippingstate" value="<?php echo $row['shippingState'];?>" required>
+			 <input type="text" class="form-control unicase-form-control text-input" id="shippingstate" name="shippingstate" value="<?php echo $user->shippingState;?>" required>
 					  </div>
 					  <div class="form-group">
 					    <label class="info-title" for="Billing City">Shipping City <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="shippingcity" name="shippingcity" required="required" value="<?php echo $row['shippingCity'];?>" >
+					    <input type="text" class="form-control unicase-form-control text-input" id="shippingcity" name="shippingcity" required="required" value="<?php echo $user->shippingCity;?>" >
 					  </div>
  <div class="form-group">
 					    <label class="info-title" for="Billing Pincode">Shipping Pincode <span>*</span></label>
-					    <input type="text" class="form-control unicase-form-control text-input" id="shippingpincode" name="shippingpincode" required="required" value="<?php echo $row['shippingPincode'];?>" >
+					    <input type="text" class="form-control unicase-form-control text-input" id="shippingpincode" name="shippingpincode" required="required" value="<?php echo $user->shippingPincode;?>" >
 					  </div>
 
 
 					  <button type="submit" name="shipupdate" class="btn-upper btn btn-primary checkout-page-button">Update</button>
 					</form>
-					<?php } ?>
+
 
 
 
@@ -231,4 +222,3 @@ while($row=mysqli_fetch_array($query))
 	</script>
 </body>
 </html>
-<?php } ?>

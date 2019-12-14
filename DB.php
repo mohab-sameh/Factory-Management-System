@@ -23,12 +23,12 @@ private $host="localhost";
  public static function getInstance(){
      if(self::$instance==null){
          self::$instance=new DB();
-
+echo "not old ";
      }
      else
      {
 
-
+echo "old ";
 
      }
      return self::$instance;

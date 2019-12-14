@@ -24,7 +24,7 @@ function getUsername()
 {
   return $this->name;
 }
-static function UpdateBilling($baddress , $bstate , $bpincode , $id)
+static function UpdateBilling($baddress , $bstate ,$bcity, $bpincode , $id)
 {
   $db = DB::getInstance();
   $con = $db->get_Connecion();
@@ -48,19 +48,42 @@ static function populate($email,$password)
   $sql ="SELECT * FROM users WHERE email='$email' and password='$password'";
   $query=mysqli_query($con,$sql);
   $row = mysqli_fetch_assoc($query);
- $user->id = $row['id'];
-$user->name  = $row['name'];
-$user->email = $row['email'];
-$user->contactNo = $row['contactno'];
-  $user->password = $row['password'];
-      $user->shippingAddress = $row['shippingAddress'];
-       $user->shippingPinCode = $row['shippingpincode'];
-        $user->billingAddress = $row['billingAddress'];
-      $user->billingState = $row['billingstate'];
-      $user->billingCity = $row['billingcity'];
-        $user->billingPinCode =  $row['billingpincode'];
-        $user->regDate =  $row['regdate'];
-          $user->updateDate =  $row['updationdate'];
+  $user->id = $row['id'];
+ $user->name  = $row['name'];
+ $user->email = $row['email'];
+ $user->contactNo = $row['contactno'];
+   $user->password = $row['password'];
+       $user->shippingAddress = $row['shippingAddress'];
+        $user->shippingPinCode = $row['shippingPincode'];
+         $user->billingAddress = $row['billingAddress'];
+       $user->billingState = $row['billingState'];
+       $user->billingCity = $row['billingCity'];
+         $user->billingPinCode =  $row['billingPincode'];
+         $user->regDate =  $row['regDate'];
+           $user->updateDate =  $row['updationDate'];
+  return $user;
+}
+static function GetWithID($id)
+{
+  $user = new User();
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql ="SELECT * FROM users WHERE id='$id'";
+  $query=mysqli_query($con,$sql);
+  $row = mysqli_fetch_assoc($query);
+  $user->id = $row['id'];
+ $user->name  = $row['name'];
+ $user->email = $row['email'];
+ $user->contactNo = $row['contactno'];
+   $user->password = $row['password'];
+       $user->shippingAddress = $row['shippingAddress'];
+        $user->shippingPinCode = $row['shippingPincode'];
+         $user->billingAddress = $row['billingAddress'];
+       $user->billingState = $row['billingState'];
+       $user->billingCity = $row['billingCity'];
+         $user->billingPinCode =  $row['billingPincode'];
+         $user->regDate =  $row['regDate'];
+           $user->updateDate =  $row['updationDate'];
   return $user;
 }
 static function  LogintUser($email,$password)
@@ -112,7 +135,44 @@ $query=mysqli_query($db->get_Connection(),$sql);
   $num=mysqli_fetch_array($query);
 }
 
+static function GetAllUser()
+{
+
+  $db = DB::getInstance();
+  $sql = "SELECT * FROM users";
+
+$users = array();
+
+
+$query=$db->selectFromTable("users");
+
+
+while($row=mysqli_fetch_array($query))
+{
+
+
+  $user = new User();
+  $user->id = $row['id'];
+ $user->name  = $row['name'];
+ $user->email = $row['email'];
+ $user->contactNo = $row['contactno'];
+   $user->password = $row['password'];
+       $user->shippingAddress = $row['shippingAddress'];
+        $user->shippingPinCode = $row['shippingPincode'];
+         $user->billingAddress = $row['billingAddress'];
+       $user->billingState = $row['billingState'];
+       $user->billingCity = $row['billingCity'];
+         $user->billingPinCode =  $row['billingPincode'];
+         $user->regDate =  $row['regDate'];
+           $user->updateDate =  $row['updationDate'];
+ array_push($users,$user);
 
 
 }
+return $users;
+}
+
+
+}
+
  ?>
