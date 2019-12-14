@@ -24,7 +24,22 @@ function getUsername()
 {
   return $this->name;
 }
-
+static function UpdateBilling($baddress , $bstate , $bpincode , $id)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql = "update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id ='".$id."'";
+  $query=mysqli_query($con,$sql);
+return $query;
+}
+static function UpdateShippingAddress($address , $sstate , $scity , $spincode , $id )
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql = mysqli_query($con,"update users set shippingAddress='$saddress',shippingState='$sstate',shippingCity='$scity',shippingPincode='$spincode' where id='".$id."'");
+  $query=mysqli_query($con,$sql);
+  return $query;
+}
 static function populate($email,$password)
 {
   $user = new User();
@@ -71,6 +86,22 @@ static function UpdateUser($password , $email , $contact)
   $db = DB::getInstance();
   $sql = "update users set password='$password' WHERE email='$email' and contactno='$contact' ";
 $query=mysqli_query($db->get_Connection(),$sql);
+}
+static function UpdateUserData($currentpass,$newpass,$currentTime,$id)
+{
+  $db = DB::getInstance();
+  $sql = "update students set password='".$newpass."', updationDate='$currentTime' where id='".$id."'";
+  $result=mysqli_query($db->get_Connection(),"SELECT password FROM  users where password='".$currentpass."' && id='".$id."'");
+  $num=mysqli_fetch_array($sql);
+  if($num>0)
+  {
+   $con=mysqli_query($db->get_Connection(),$sql);
+   return $num;
+}
+else {
+
+  return 0;
+}
 }
 static function GetUser($emil,$contact)
 {

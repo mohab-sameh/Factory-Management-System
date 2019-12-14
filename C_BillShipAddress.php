@@ -2,8 +2,9 @@
 session_start();
 //error_reporting(0);
 require_once 'DB.php';
+include('M_User.php');
 $db = DB::getInstance();
-$con = $db->get_Connecion()
+$con = $db->get_Connecion();
 if(strlen($_SESSION['login'])==0)
     {
 header('location:index.php');
@@ -16,8 +17,8 @@ else{
 		$bstate=$_POST['bilingstate'];
 		$bcity=$_POST['billingcity'];
 		$bpincode=$_POST['billingpincode'];
-		$query=mysqli_query($con,"update users set billingAddress='$baddress',billingState='$bstate',billingCity='$bcity',billingPincode='$bpincode' where id='".$_SESSION['id']."'");
-		if($query)
+		$query= User::UpdateBilling($baddress,$bstate,$bpincode,$_SESSION['id']);
+    	if($query)
 		{
 echo "<script>alert('Billing Address has been updated');</script>";
 		}
@@ -31,7 +32,7 @@ echo "<script>alert('Billing Address has been updated');</script>";
 		$sstate=$_POST['shippingstate'];
 		$scity=$_POST['shippingcity'];
 		$spincode=$_POST['shippingpincode'];
-		$query=mysqli_query($con,"update users set shippingAddress='$saddress',shippingState='$sstate',shippingCity='$scity',shippingPincode='$spincode' where id='".$_SESSION['id']."'");
+		$query= User::UpdateShippingAddress($address,$sstate,$city,$spincode,$_SESSION['id']);
 		if($query)
 		{
 echo "<script>alert('Shipping Address has been updated');</script>";
