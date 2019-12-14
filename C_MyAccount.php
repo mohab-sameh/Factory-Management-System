@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-require_once 'DB.php';
+include("M_User.php");
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 
@@ -10,6 +10,7 @@ if(strlen($_SESSION['login'])==0)
 header('location:index.php');
 }
 else{
+  $user = User::GetWithID($_SESSION['id']);
 	if(isset($_POST['update']))
 	{
 		$name=$_POST['name'];
