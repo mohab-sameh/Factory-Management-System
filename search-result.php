@@ -1,4 +1,4 @@
-<?php include('C_SearchResult.php') ?>
+<?php include('C_SearchResult.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

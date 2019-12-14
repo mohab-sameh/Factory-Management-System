@@ -1,4 +1,4 @@
-<?php include('C_PaymentMethod.php') ?>
+<?php include('C_PaymentMethod.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

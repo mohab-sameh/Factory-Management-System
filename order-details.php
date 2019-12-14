@@ -1,4 +1,4 @@
-<?php include('C_OrderDetails.php') ?>
+<?php include('C_OrderDetails.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

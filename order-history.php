@@ -1,4 +1,4 @@
-<?php include('C_OrderHistory.php') ?>
+<?php include('C_OrderHistory.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">

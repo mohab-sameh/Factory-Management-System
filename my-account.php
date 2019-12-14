@@ -1,4 +1,4 @@
-<<?php include('C_MyAccount.php') ?>
+<<?php include('C_MyAccount.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

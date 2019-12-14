@@ -1,4 +1,4 @@
-<?php include('C_MyWishList.php') ?>
+<?php include('C_MyWishList.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 require_once 'DB.php';
 $db = DB::getInstance();
-$con = $db->get_Connecion()
+$con = $db->get_Connecion();
 if(isset($_GET['action']) && $_GET['action']=="add"){
 	$id=intval($_GET['id']);
 	if(isset($_SESSION['cart'][$id])){

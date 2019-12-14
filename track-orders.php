@@ -1,4 +1,4 @@
-<?php include('C_TrackOrders.php') ?>
+<?php include('C_TrackOrders.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

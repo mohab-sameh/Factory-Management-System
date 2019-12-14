@@ -1,6 +1,6 @@
 <?php
 
-include('C_MyCart.php')
+include('C_MyCart.php');
 ?>
 
 <!DOCTYPE html>

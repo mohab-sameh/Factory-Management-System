@@ -1,4 +1,4 @@
-<?php include('C_TrackOrder.php') ?>
+<?php include('C_TrackOrder.php'); ?>
 <script language="javascript" type="text/javascript">
 function f2()
 {

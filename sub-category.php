@@ -1,4 +1,4 @@
-<?php include('C_SubCategory.php') ?>
+<?php include('C_SubCategory.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
