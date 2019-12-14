@@ -126,7 +126,7 @@ else {
   return 0;
 }
 }
-static function GetUser($emil,$contact)
+static function GetUser($email,$contact)
 {
   $db = DB::getInstance();
   $sql = "SELECT * FROM users WHERE email='$email' and contactno='$contact'";
