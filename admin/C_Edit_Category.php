@@ -22,5 +22,5 @@ $sql=mysqli_query($con,"update category set categoryName='$category',categoryDes
 $_SESSION['msg']="Category Updated !!";
 
 }
-
+}
 ?>
