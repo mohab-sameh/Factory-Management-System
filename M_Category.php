@@ -24,7 +24,7 @@ function getCategoryName()
 
 static function getCategory($categoryName)
 {
-  $category = new category();
+  $category = new Category();
   $db = DB::getInstance();
   $con = $db->get_Connecion();
   $sql ="SELECT * FROM category WHERE categoryName='$categoryName'";
@@ -38,7 +38,7 @@ static function getCategory($categoryName)
   return $category;
 }
 
-static function getWithID($id)
+static function getCategoryWithID($id)
 {
   $category = new category();
   $db = DB::getInstance();

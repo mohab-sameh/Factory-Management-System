@@ -97,7 +97,7 @@ include('C_BillShipAddress.php')
 					<form class="register-form" role="form" method="post">
 <div class="form-group">
 					    <label class="info-title" for="Billing Address">Billing Address<span>*</span></label>
-					    <textarea class="form-control unicase-form-control text-input" " name="billingaddress" required="required"><?php echo $user->billingState;?></textarea>
+					    <textarea class="form-control unicase-form-control text-input" " name="billingaddress" required="required"><?php echo $user->billingState; ?></textarea>
 					  </div>
 
 
