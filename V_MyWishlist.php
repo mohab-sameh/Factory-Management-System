@@ -108,7 +108,7 @@ $num=mysqli_num_rows($rt);
 							<span class="review">( <?php echo htmlentities($num);?> Reviews )</span>
 						</div>
 						<?php } ?>
-						<div class="price">Rs.
+						<div class="price">EGP
 							<?php echo htmlentities($row['pprice']);?>.00
 							<span>$900.00</span>
 						</div>

@@ -1,6 +1,8 @@
 <?php
-
-include('C_fetchData.php');
+//include('C_fetchData.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_fetchData.php";
+//echo ($path);
+include_once($path);
 
 
 ?>
@@ -17,7 +19,7 @@ include('C_fetchData.php');
 	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
 	    <meta name="robots" content="all">
 
-	    <title>Shopping Portal Home Page</title>
+	    <title>Abo El Kheir Factories Home Page</title>
 
 	    <!-- Bootstrap Core CSS -->
 	    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -119,7 +121,7 @@ include('C_fetchData.php');
 							<h4 class="info-box-heading orange">free shipping</h4>
 						</div>
 					</div>
-					<h6 class="text">free ship-on oder over Rs. 600.00</h6>
+					<h6 class="text">free ship-on oder over EGP 600.00</h6>
 				</div>
 			</div><!-- .col -->
 
@@ -191,8 +193,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">
 				<span class="price">
-					Rs.<?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?>	</span>
+					EGP<?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">EGP<?php echo htmlentities($row['productPriceBeforeDiscount']);?>	</span>
 
 			</div><!-- /.product-price -->
 
@@ -245,8 +247,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">
 				<span class="price">
-					Rs. <?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					EGP <?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">EGP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 
 			</div><!-- /.product-price -->
 
@@ -299,8 +301,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">
 				<span class="price">
-					Rs.<?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					EGP<?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">EGP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 
 			</div>
 
@@ -354,8 +356,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">
 				<span class="price">
-					Rs. <?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					EGP <?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">EGP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 
 			</div>
 
@@ -400,8 +402,8 @@ while ($row=mysqli_fetch_array($ret))
 
 			<div class="product-price">
 				<span class="price">
-					Rs .<?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">Rs.<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					EGP<?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">EGP<?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 
 			</div>
 
@@ -461,7 +463,7 @@ while ($row=mysqli_fetch_array($ret))
 											<div class="rating rateit-small"></div>
 											<div class="product-price">
 												<span class="price">
-													Rs. <?php echo htmlentities($row['productPrice']);?>
+													EGP <?php echo htmlentities($row['productPrice']);?>
 												</span>
 
 											</div><!-- /.product-price -->
