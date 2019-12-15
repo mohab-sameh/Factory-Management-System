@@ -24,13 +24,13 @@ $pid=intval($_GET['pid']);
 if(isset($_GET['pid']) && $_GET['action']=="wishlist" ){
 	if(strlen($_SESSION['login'])==0)
     {
-header('location:login.php');
+header('location:V_Login.php');
 }
 else
 {
 mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['id']."','$pid')");
 echo "<script>alert('Product aaded in wishlist');</script>";
-header('location:my-wishlist.php');
+header('location:V_MyWishlist.php');
 
 }
 }

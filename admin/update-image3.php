@@ -30,7 +30,7 @@ else{
 function getSubcat(val) {
 	$.ajax({
 	type: "POST",
-	url: "get_subcat.php",
+	url: "V_GetSubcat.php",
 	data:'cat_id='+val,
 	success: function(data){
 		$("#subcategory").html(data);

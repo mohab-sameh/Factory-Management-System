@@ -20,9 +20,9 @@
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="change-password.php">Change Password</a></li>
+								<li><a href="V_ChangePassword.php">Change Password</a></li>
 								<li class="divider"></li>
-								<li><a href="logout.php">Logout</a></li>
+								<li><a href="V_Logout.php">Logout</a></li>
 							</ul>
 						</li>
 					</ul>

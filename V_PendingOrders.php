@@ -116,7 +116,7 @@ while($row=mysqli_fetch_array($query))
 						</a>
 					</td>
 					<td class="cart-product-name-info">
-						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid'];?>">
+						<h4 class='cart-product-description'><a href="V_ProductDetails.php?pid=<?php echo $row['opid'];?>">
 						<?php echo $row['pname'];?></a></h4>
 
 
@@ -130,12 +130,12 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['paym']; ?>  </td>
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 
-					<td><a href="pending-orders.php?id=<?php echo $row['oid']; ?> ">Delete</td>
+					<td><a href="V_PendingOrders.php?id=<?php echo $row['oid']; ?> ">Delete</td>
 				</tr>
 <?php $cnt=$cnt+1;} ?>
 <tr>
 	<td colspan="9"><div class="cart-checkout-btn pull-right">
-							<button type="submit" name="ordersubmit" class="btn btn-primary"><a href="payment-method.php">PROCCED To Payment</a></button>
+							<button type="submit" name="ordersubmit" class="btn btn-primary"><a href="V_PaymentMethod.php">PROCCED To Payment</a></button>
 
 						</div></td>
 

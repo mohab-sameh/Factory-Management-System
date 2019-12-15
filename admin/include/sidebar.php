@@ -11,7 +11,7 @@
 								</a>
 								<ul id="togglePages" class="collapse unstyled">
 									<li>
-										<a href="todays-orders.php">
+										<a href="V_TodaysOrders.php">
 											<i class="icon-tasks"></i>
 											Today's Orders
   <?php
@@ -28,7 +28,7 @@ $num_rows1 = mysqli_num_rows($result);
 										</a>
 									</li>
 									<li>
-										<a href="pending-orders.php">
+										<a href="V_PendingOrders.php">
 											<i class="icon-tasks"></i>
 											Pending Orders
 										<?php	
@@ -40,7 +40,7 @@ $num = mysqli_num_rows($ret);
 										</a>
 									</li>
 									<li>
-										<a href="delivered-orders.php">
+										<a href="V_DeliveredOrders.php">
 											<i class="icon-inbox"></i>
 											Delivered Orders
 								<?php	
@@ -56,7 +56,7 @@ $num1 = mysqli_num_rows($rt);
 							</li>
 							
 							<li>
-								<a href="manage-users.php">
+								<a href="V_ManageUsers.php">
 									<i class="menu-icon icon-group"></i>
 									Manage users
 								</a>
@@ -66,17 +66,17 @@ $num1 = mysqli_num_rows($rt);
 
 						<ul class="widget widget-menu unstyled">
                                 <li><a href="category.php"><i class="menu-icon icon-tasks"></i> Create Category </a></li>
-                                <li><a href="subcategory.php"><i class="menu-icon icon-tasks"></i>Sub Category </a></li>
-                                <li><a href="insert-product.php"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
-                                <li><a href="manage-products.php"><i class="menu-icon icon-table"></i>Manage Products </a></li>
+                                <li><a href="V_SubCategory.php"><i class="menu-icon icon-tasks"></i>Sub Category </a></li>
+                                <li><a href="V_InsertProduct.php"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
+                                <li><a href="V_ManageProducts.php"><i class="menu-icon icon-table"></i>Manage Products </a></li>
                         
                             </ul><!--/.widget-nav-->
 
 						<ul class="widget widget-menu unstyled">
-							<li><a href="user-logs.php"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
+							<li><a href="V_UserLogs.php"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
 							
 							<li>
-								<a href="logout.php">
+								<a href="V_Logout.php">
 									<i class="menu-icon icon-signout"></i>
 									Logout
 								</a>

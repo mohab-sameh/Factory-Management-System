@@ -48,7 +48,7 @@ if(isset($_POST['ordersubmit']))
 
 if(strlen($_SESSION['login'])==0)
     {
-header('location:login.php');
+header('location:V_Login.php');
 }
 else{
 
@@ -62,7 +62,7 @@ else{
 
 
 mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$_SESSION['id']."','$qty','$val34')");
-header('location:payment-method.php');
+header('location:V_PaymentMethod.php');
 }
 }
 }

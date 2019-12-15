@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 require_once 'DB.php';
-include('M_SubCategory.php');
+include('M_V_SubCategory.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 
@@ -36,7 +36,7 @@ if(isset($_GET['pid']) && $_GET['action']=="wishlist" )
 {
 	if(strlen($_SESSION['login'])==0)
     {
-			header('location:login.php');
+			header('location:V_Login.php');
 }
 else
 {
@@ -44,7 +44,7 @@ else
 	// same for this wishlist code.. haneb2a n7awlo OOP bas Low Priority
 	mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['id']."','".$_GET['pid']."')");
 	echo "<script>alert('Product aaded in wishlist');</script>";
-	header('location:my-wishlist.php');
+	header('location:V_MyWishlist.php');
 
 }
 }

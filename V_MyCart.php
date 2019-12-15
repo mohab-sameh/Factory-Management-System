@@ -141,7 +141,7 @@ if(!empty($_SESSION['cart'])){
 						</a>
 					</td>
 					<td class="cart-product-name-info">
-						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo htmlentities($pd=$row['id']);?>" ><?php echo $row['productName'];
+						<h4 class='cart-product-description'><a href="V_ProductDetails.php?pid=<?php echo htmlentities($pd=$row['id']);?>" ><?php echo $row['productName'];
 
 $_SESSION['sid']=$pd;
 						 ?></a></h4>

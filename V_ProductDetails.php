@@ -118,7 +118,7 @@ while ($rws=mysqli_fetch_array($ret)) {
 						</div><!-- /.hot-deal-wrapper -->
 
 						<div class="product-info text-left m-t-20">
-							<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rws['id']);?>"><?php echo htmlentities($rws['productName']);?></a></h3>
+							<h3 class="name"><a href="V_ProductDetails.php?pid=<?php echo htmlentities($rws['id']);?>"><?php echo htmlentities($rws['productName']);?></a></h3>
 							<div class="rating rateit-small"></div>
 
 							<div class="product-price">
@@ -139,7 +139,7 @@ while ($rws=mysqli_fetch_array($ret)) {
 									<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 								<i class="fa fa-shopping-cart"></i>
 							</button>
-						<a href="product-details.php?page=product&action=add&id=<?php echo $rws['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
+						<a href="V_ProductDetails.php?page=product&action=add&id=<?php echo $rws['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
 
 
 								</div>
@@ -331,7 +331,7 @@ $num=mysqli_num_rows($rt);
 
 									<div class="col-sm-6">
 										<div class="favorite-button m-t-10">
-											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="product-details.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist">
+											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="V_ProductDetails.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist">
 											    <i class="fa fa-heart"></i>
 											</a>
 
@@ -367,7 +367,7 @@ $num=mysqli_num_rows($rt);
 									</div>
 
 									<div class="col-sm-7">
-										<a href="product-details.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+										<a href="V_ProductDetails.php?page=product&action=add&id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
 									</div>
 
 
@@ -549,7 +549,7 @@ while($rw=mysqli_fetch_array($qry))
 	<div class="product">
 		<div class="product-image">
 			<div class="image">
-				<a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($rw['id']);?>/<?php echo htmlentities($rw['productImage1']);?>" width="150" height="240" alt=""></a>
+				<a href="V_ProductDetails.php?pid=<?php echo htmlentities($rw['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($rw['id']);?>/<?php echo htmlentities($rw['productImage1']);?>" width="150" height="240" alt=""></a>
 			</div><!-- /.image -->
 
 
@@ -557,7 +557,7 @@ while($rw=mysqli_fetch_array($qry))
 
 
 		<div class="product-info text-left">
-			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($rw['id']);?>"><?php echo htmlentities($rw['productName']);?></a></h3>
+			<h3 class="name"><a href="V_ProductDetails.php?pid=<?php echo htmlentities($rw['id']);?>"><?php echo htmlentities($rw['productName']);?></a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 
@@ -577,7 +577,7 @@ while($rw=mysqli_fetch_array($qry))
 							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 								<i class="fa fa-shopping-cart"></i>
 							</button>
-						<a href="product-details.php?page=product&action=add&id=<?php echo $rw['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
+						<a href="V_ProductDetails.php?page=product&action=add&id=<?php echo $rw['id']; ?>" class="lnk btn btn-primary">Add to cart</a>
 
 						</li>
 

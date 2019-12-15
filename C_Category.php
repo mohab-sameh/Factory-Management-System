@@ -37,7 +37,7 @@ if(isset($_GET['pid']) && $_GET['action']=="wishlist" )
 {
 	if(strlen($_SESSION['login'])==0)
     {
-			header('location:login.php');
+			header('location:V_Login.php');
 		}
 else
 {
@@ -45,7 +45,7 @@ else
 	// (might be left procedural) w momkn nsibo zay mahowa law mafish wa2t
 	mysqli_query($con,"insert into wishlist(userId,productId) values('".$_SESSION['id']."','".$_GET['pid']."')");
 	echo "<script>alert('Product aaded in wishlist');</script>";
-	header('location:my-wishlist.php');
+	header('location:V_MyWishlist.php');
 	}
 }
 

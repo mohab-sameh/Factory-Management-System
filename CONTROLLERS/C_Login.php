@@ -41,7 +41,7 @@ exit();
 }
 else
 {
-$extra="login.php";
+$extra="V_Login.php";
 $email=$_POST['email'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=0;

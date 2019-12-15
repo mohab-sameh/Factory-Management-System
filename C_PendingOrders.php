@@ -6,7 +6,7 @@ $db = DB::getInstance();
 $con = $db->get_Connecion();
 if(strlen($_SESSION['login'])==0)
     {
-header('location:login.php');
+header('location:V_Login.php');
 }
 else{
 	if (isset($_GET['id'])) {

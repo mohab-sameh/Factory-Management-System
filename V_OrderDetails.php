@@ -116,7 +116,7 @@ while($row=mysqli_fetch_array($query))
 						</a>
 					</td>
 					<td class="cart-product-name-info">
-						<h4 class='cart-product-description'><a href="product-details.php?pid=<?php echo $row['opid'];?>">
+						<h4 class='cart-product-description'><a href="V_ProductDetails.php?pid=<?php echo $row['opid'];?>">
 						<?php echo $row['pname'];?></a></h4>
 
 
@@ -130,7 +130,7 @@ while($row=mysqli_fetch_array($query))
 					<td class="cart-product-sub-total"><?php echo $row['odate']; ?>  </td>
 
 					<td>
- <a href="javascript:void(0);" onClick="popUpWindow('track-order.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
+ <a href="javascript:void(0);" onClick="popUpWindow('V_TrackOrder.php?oid=<?php echo htmlentities($row['orderid']);?>');" title="Track order">
 					Track</td>
 				</tr>
 <?php $cnt=$cnt+1;} } else { ?>

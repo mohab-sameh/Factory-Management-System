@@ -20,7 +20,7 @@ $num= User::GetUser($email,$contact);
 
 if($num>0)
 {
-$extra="forgot-password.php";
+$extra="V_ForgotPassword.php";
 User::UpdateUser($password,$email,$contact);
 $host=$_SERVER['HTTP_HOST'];
 $uri=rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
@@ -30,7 +30,7 @@ exit();
 }
 else
 {
-$extra="forgot-password.php";
+$extra="V_ForgotPassword.php";
 $host  = $_SERVER['HTTP_HOST'];
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
 header("location:http://$host$uri/$extra");
@@ -79,7 +79,7 @@ exit();
 }
 else
 {
-$extra="login.php";
+$extra="V_Login.php";
 $email=$_POST['email'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=0;
