@@ -31,8 +31,8 @@ $num_rows1 = mysqli_num_rows($result);
 										<a href="V_PendingOrders.php">
 											<i class="icon-tasks"></i>
 											Pending Orders
-										<?php	
-	$status='Delivered';									 
+										<?php
+	$status='Delivered';
 $ret = mysqli_query($con,"SELECT * FROM Orders where orderStatus!='$status' || orderStatus is null ");
 $num = mysqli_num_rows($ret);
 {?><b class="label orange pull-right"><?php echo htmlentities($num); ?></b>
@@ -43,8 +43,8 @@ $num = mysqli_num_rows($ret);
 										<a href="V_DeliveredOrders.php">
 											<i class="icon-inbox"></i>
 											Delivered Orders
-								<?php	
-	$status='Delivered';									 
+								<?php
+	$status='Delivered';
 $rt = mysqli_query($con,"SELECT * FROM Orders where orderStatus='$status'");
 $num1 = mysqli_num_rows($rt);
 {?><b class="label green pull-right"><?php echo htmlentities($num1); ?></b>
@@ -54,7 +54,7 @@ $num1 = mysqli_num_rows($rt);
 									</li>
 								</ul>
 							</li>
-							
+
 							<li>
 								<a href="V_ManageUsers.php">
 									<i class="menu-icon icon-group"></i>
@@ -65,16 +65,16 @@ $num1 = mysqli_num_rows($rt);
 
 
 						<ul class="widget widget-menu unstyled">
-                                <li><a href="category.php"><i class="menu-icon icon-tasks"></i> Create Category </a></li>
+                                <li><a href="V_Category.php"><i class="menu-icon icon-tasks"></i> Create Category </a></li>
                                 <li><a href="V_SubCategory.php"><i class="menu-icon icon-tasks"></i>Sub Category </a></li>
                                 <li><a href="V_InsertProduct.php"><i class="menu-icon icon-paste"></i>Insert Product </a></li>
                                 <li><a href="V_ManageProducts.php"><i class="menu-icon icon-table"></i>Manage Products </a></li>
-                        
+
                             </ul><!--/.widget-nav-->
 
 						<ul class="widget widget-menu unstyled">
 							<li><a href="V_UserLogs.php"><i class="menu-icon icon-tasks"></i>User Login Log </a></li>
-							
+
 							<li>
 								<a href="V_Logout.php">
 									<i class="menu-icon icon-signout"></i>

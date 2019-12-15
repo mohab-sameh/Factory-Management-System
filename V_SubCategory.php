@@ -90,7 +90,7 @@ while($row=mysqli_fetch_array($sql))
 		<div class="accordion">
 	    	<div class="accordion-group">
 	            <div class="accordion-heading">
-	                <a href="category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
+	                <a href="V_Category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
 	                   <?php echo $row['categoryName'];?>
 	                </a>
 	            </div>
@@ -179,13 +179,13 @@ while ($row=mysqli_fetch_array($ret))
 							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 								<i class="fa fa-shopping-cart"></i>
 							</button>
-							<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
+							<a href="V_Category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
 							<button class="btn btn-primary" type="button">Add to cart</button></a>
 
 						</li>
 
 		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="category.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist" title="Wishlist">
+							<a class="add-to-cart" href="V_Category.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist" title="Wishlist">
 								 <i class="icon fa fa-heart"></i>
 							</a>
 						</li>

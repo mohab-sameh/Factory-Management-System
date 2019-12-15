@@ -23,7 +23,7 @@ while($row=mysqli_fetch_array($sql))
     ?>
 
 			<li class="dropdown yamm">
-				<a href="category.php?cid=<?php echo $row['id'];?>"> <?php echo $row['categoryName'];?></a>
+				<a href="V_Category.php?cid=<?php echo $row['id'];?>"> <?php echo $row['categoryName'];?></a>
 
 			</li>
 			<?php } ?>

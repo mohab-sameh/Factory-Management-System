@@ -86,7 +86,7 @@ while($row=mysqli_fetch_array($sql))
     ?>
 	    	<div class="accordion-group">
 	            <div class="accordion-heading">
-	                <a href="category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
+	                <a href="V_Category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
 	                   <?php echo $row['categoryName'];?>
 	                </a>
 	            </div>
