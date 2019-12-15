@@ -1,4 +1,5 @@
-<?php include('C_Edit_V_SubCategory.php');?>
+<?php include_once('C_SubCategory.php');
+include_once('../DB.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
