@@ -129,5 +129,25 @@ while($row=mysqli_fetch_array($query))
 return $categories;
 }
 
+static function getAllSubCategoriesForCategoryByID($id)
+{
+  $categoryid = $id;
+
+$sql = "SELECT * FROM subcategory WHERE categoryid = $categoryid";
+$categories = array();
+$query=$db->selectFromTable("subcategory");
+while($row=mysqli_fetch_array($query))
+{
+  $category = new SubCategory();
+  $category->id = $row['id'];
+  $category->categoryID = $row['categoryid'];
+  $category->subCategoryName  = $row['subcategory'];
+  $category->creationDate = $row['creationDate'];
+  $category->updationDate = $row['updationDate'];
+  array_push($categories,$category);
+}
+return $categories;
+}
+
 }
 ?>
