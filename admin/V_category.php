@@ -1,5 +1,10 @@
 
-<?php include('C_Category.php');?>
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_Category.php";
+include($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,45 +79,27 @@
 						</div>
 
 
-	<div class="module">
-							<div class="module-head">
-								<h3>Manage Categories</h3>
-							</div>
-							<div class="module-body table">
-								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Category</th>
-											<th>Description</th>
-											<th>Creation date</th>
-											<th>Last Updated</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
 
-<?php $query=mysqli_query($con,"select * from category");
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
+
+<div>
+	<h3>Manage Categories</h3>
+	<?php
+	$arr = Category::getAllCategories();
+	function html_table($data = array())
+	{
+	    $rows = array();
+	    foreach ($data as $row) {
+	        $cells = array();
+	        foreach ($row as $cell) {
+	            $cells[] = "<td>{$cell}</td>";
+	        }
+	        $rows[] = "<tr>" . implode('', $cells) . "</tr>";
+	    }
+	    return "<table cellpadding='0' cellspacing='0' border='0' class='datatable-1 table table-bordered table-striped	 display' width='100%'>" . implode('', $rows) . "</table>";
+	}
+	echo html_table($arr);
 ?>
-										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($row['categoryName']);?></td>
-											<td><?php echo htmlentities($row['categoryDescription']);?></td>
-											<td> <?php echo htmlentities($row['creationDate']);?></td>
-											<td><?php echo htmlentities($row['updationDate']);?></td>
-											<td>
-											<a href="V_EditCategory.php?id=<?php echo $row['id']?>" ><i class="icon-edit"></i></a>
-											<a href="V_Category.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
-										</tr>
-										<?php $cnt=$cnt+1; } ?>
-
-								</table>
-							</div>
-						</div>
-
+</div>
 
 
 					</div><!--/.content-->
