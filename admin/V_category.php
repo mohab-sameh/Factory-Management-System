@@ -1,7 +1,7 @@
 
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_Category.php";
-include($path);
+include_once($path);
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
 include_once($path);
 ?>
@@ -88,11 +88,15 @@ include_once($path);
 	function html_table($data = array())
 	{
 	    $rows = array();
-	    foreach ($data as $row) {
+	    foreach ($data as $row)
+			{
 	        $cells = array();
-	        foreach ($row as $cell) {
+	        foreach ($row as $cell)
+					{
 	            $cells[] = "<td>{$cell}</td>";
 	        }
+					$cells[] = "<td> <a href=V_EditCategory.php?id=".$row->id."><i class=icon-edit></i></a> </td>";
+					$cells[] = "<td> <a href=V_Category.php?id=" . $row->id . "&del=delete ><i class='icon-remove-sign'></i></a></td>";
 	        $rows[] = "<tr>" . implode('', $cells) . "</tr>";
 	    }
 	    return "<table cellpadding='0' cellspacing='0' border='0' class='datatable-1 table table-bordered table-striped	 display' width='100%'>" . implode('', $rows) . "</table>";

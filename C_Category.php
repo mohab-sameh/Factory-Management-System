@@ -7,6 +7,23 @@ $db = DB::getInstance();
 $con = $db->get_Connecion();
 $category = new Category();
 
+
+if(isset($_POST['submit']))
+{
+	$category=$_POST['category'];
+	$description=$_POST['description'];
+$sql=mysqli_query($con,"insert into category(categoryName,categoryDescription) values('$category','$description')");
+$_SESSION['msg']="Category Created !!";
+
+}
+
+if(isset($_GET['del']))
+		  {
+		          mysqli_query($con,"delete from category where id = '".$_GET['id']."'");
+                  $_SESSION['delmsg']="Category deleted !!";
+		  }
+
+
 $cid=intval($_GET['cid']);
 if(isset($_GET['action']) && $_GET['action']=="add")
 {

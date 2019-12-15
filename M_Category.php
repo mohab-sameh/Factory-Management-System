@@ -22,6 +22,10 @@ function getCategoryName()
   return $this->categoryName;
 }
 
+function getCategoryID()
+{
+  return $this->id;
+}
 static function getCategory($categoryName)
 {
   $category = new Category();
