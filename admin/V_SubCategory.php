@@ -115,19 +115,16 @@ for ($i=0;$i<count($allCategories);$i++)
 
 					<?php
 
-					$elements = SubCategory::getJointSubCategories();
+					$elements = SubCategory::getAllSubCategories();
 					$cnt=1;
 					for($i=0; $i<count($elements); $i++)
 					{
 					?>
 															<tr>
 																<td><?php echo ($cnt);?></td>
-																<?php
-																$catname = $elements[$i]->categoryID;
-																$catname = Category::getCategoryWithID($catname);
-																$catname = $catname->categoryName;
-																?>
-																<td><?php echo ($catname);?></td>
+																<td><?php
+
+																echo ($elements[$i]->categoryName);?></td>
 																<td><?php echo ($elements[$i]->subCategoryName);?></td>
 																<td> <?php echo ($elements[$i]->creationDate);?></td>
 																<td><?php echo ($elements[$i]->updationDate);?></td>

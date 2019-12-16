@@ -9,6 +9,7 @@ public $categoryID;
 public $subCategoryName;
 public $creationDate;
 public $updateDate;
+public $categoryName;
 
 function __construct()
 {
@@ -60,12 +61,11 @@ return $category;
 }
 
 
-static function addSubCategory($categoryID, $subCategoryName, $creationDate)
+static function addSubCategory($categoryID, $categoryName, $subCategoryName, $creationDate)
 {
 $db = DB::getInstance();
-$sql = "insert into subcategory (categoryid, subcategory, creationDate) values('$categoryID', '$subCategoryName', '$creationDate')";
+$sql = "INSERT INTO subcategory (categoryid, categoryname, subcategory, creationDate) VALUES('$categoryID', '$categoryName', '$subCategoryName', '$creationDate')";
 $query=mysqli_query($db->get_Connecion(),$sql);
-return $query;
 }
 
 
