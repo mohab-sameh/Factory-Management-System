@@ -43,18 +43,17 @@
 									</thead>
 									<tbody>
 
-<?php $query=mysqli_query($con,"select * from userlog");
-$cnt=1;
-while($row=mysqli_fetch_array($query))
+<?php $count=1;
+foreach ($userlogs as $userlog)
 {
 ?>
 										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($row['userEmail']);?></td>
-											<td><?php echo htmlentities($row['userip']);?></td>
-											<td> <?php echo htmlentities($row['loginTime']);?></td>
-											<td><?php echo htmlentities($row['logout']); ?></td>
-										<td><?php $st=$row['status'];
+											<td><?php echo htmlentities($count);?></td>
+											<td><?php echo htmlentities($userlog->userEmail);?></td>
+											<td><?php echo htmlentities($userlog->userIP);?></td>
+											<td> <?php echo htmlentities($userlog->loginTime);?></td>
+											<td><?php echo htmlentities($userlog->logout); ?></td>
+										<td><?php $st= $userlog->status;
 
 if($st==1)
 {
@@ -67,7 +66,7 @@ else
 										 ?></td>
 
 
-										<?php $cnt=$cnt+1; } ?>
+										<?php $count=$count+1; } ?>
 
 								</table>
 							</div>

@@ -32,34 +32,33 @@ window.print();
       <td  class="fontkink"><?php echo $oid;?></td>
     </tr>
     <?php
-$ret = mysqli_query($con,"SELECT * FROM ordertrackhistory WHERE orderId='$oid'");
-$num=mysqli_num_rows($ret);
-if($num>0)
+    if( count($orderTracks) > 0 )
+    {
+foreach ( $orderTracks as $orderTrack)
 {
-while($row=mysqli_fetch_array($ret))
-      {
      ?>
 
 
 
       <tr height="20">
       <td class="fontkink1" ><b>At Date:</b></td>
-      <td  class="fontkink"><?php echo $row['postingDate'];?></td>
+      <td  class="fontkink"><?php echo $orderTrack->postingDate ;?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Status:</b></td>
-      <td  class="fontkink"><?php echo $row['status'];?></td>
+      <td  class="fontkink"><?php echo $orderTrack->status ;?></td>
     </tr>
      <tr height="20">
       <td  class="fontkink1"><b>Remark:</b></td>
-      <td  class="fontkink"><?php echo $row['remark'];?></td>
+      <td  class="fontkink"><?php echo $orderTrack->remark;?></td>
     </tr>
 
 
     <tr>
       <td colspan="2"><hr /></td>
     </tr>
-   <?php } }
+   <?php }
+ } 
 else{
    ?>
    <tr>
@@ -67,10 +66,10 @@ else{
    </tr>
    <?php  }
 $st='Delivered';
-   $rt = mysqli_query($con,"SELECT * FROM orders WHERE id='$oid'");
-     while($num=mysqli_fetch_array($rt))
+
+     foreach($orders as $order)
      {
-     $currrentSt=$num['orderStatus'];
+     $currrentSt=$order->orderStatus;
    }
      if($st==$currrentSt)
      { ?>
