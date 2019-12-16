@@ -67,7 +67,7 @@ class Products
 		{
 			$MyObj= new Products($row["Id"]);
 			$Result[$i]=$MyObj;
-			$i++;
+			$i = $i+1;
 		}
 		return $Result;
 

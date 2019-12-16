@@ -121,7 +121,7 @@ for ($i=0;$i<count($allCategories);$i++)
 					{
 					?>
 															<tr>
-																<td><?php echo ($cnt);?></td>
+																<td><?php echo ($elements[$i]->id);?></td>
 																<td><?php
 
 																echo ($elements[$i]->categoryName);?></td>
