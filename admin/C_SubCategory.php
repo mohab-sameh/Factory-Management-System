@@ -16,10 +16,13 @@ if(isset($_POST['submit']))
 {
 
 	$categoryName=$_POST['category'];
-	$categoryName = "lol";
+	$catID=$categoryName;
+	$catName = Category::getCategoryWithID($categoryName);
+	$catName = $catName->categoryName;
+	echo($catName);
 	$subcat=$_POST['subcategory'];
 	$currentTime = date( 'd-m-Y h:i:s A', time () );
-	SubCategory::addSubCategory($catID, $categoryName, $subcat, $currentTime);
+	SubCategory::addSubCategory($catID, $catName, $subcat, $currentTime);
 
 $_SESSION['msg']="SubCategory Created !!";
 $message=$_SESSION['msg'];

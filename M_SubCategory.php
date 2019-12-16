@@ -41,6 +41,8 @@ $category->categoryID = $row['categoryid'];
 $category->subCategoryName  = $row['subcategory'];
 $category->creationDate = $row['creationDate'];
 $category->updationDate = $row['updationDate'];
+$category->categoryName = $row['categoryname'];
+
 return $category;
 }
 
@@ -57,6 +59,7 @@ $category->categoryID = $row['categoryid'];
 $category->subCategoryName  = $row['subcategory'];
 $category->creationDate = $row['creationDate'];
 $category->updationDate = $row['updationDate'];
+$category->categoryName = $row['categoryname'];
 return $category;
 }
 
@@ -103,6 +106,8 @@ while($row=mysqli_fetch_array($query))
   $category->subCategoryName  = $row['subcategory'];
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
+  $category->categoryName = $row['categoryname'];
+
   array_push($categories,$category);
 }
 return $categories;
@@ -124,6 +129,8 @@ while($row=mysqli_fetch_array($query))
   $category->subCategoryName  = $row['subcategory'];
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
+  $category->categoryName = $row['categoryname'];
+
   array_push($categories,$category);
 }
 return $categories;
@@ -144,6 +151,8 @@ while($row=mysqli_fetch_array($query))
   $category->subCategoryName  = $row['subcategory'];
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
+  $category->categoryName = $row['categoryname'];
+
   array_push($categories,$category);
 }
 return $categories;
@@ -164,6 +173,8 @@ static function getJointSubCategories()
     $category->subCategoryName  = $row['subcategory'];
     $category->creationDate = $row['creationDate'];
     $category->updationDate = $row['updationDate'];
+    $category->categoryName = $row['categoryname'];
+
     array_push($categories,$category);
   }
   return $categories;

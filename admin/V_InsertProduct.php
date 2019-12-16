@@ -97,6 +97,19 @@ for ($i=0;$i<count($allCategories);$i++)
 <label class="control-label" for="basicinput">Sub Category</label>
 <div class="controls">
 <select   name="subcategory"  id="subcategory" class="span8 tip" required>
+	<option value="">Select sub category</option>
+	<?php
+
+	for ($i=0;$i<count($allSubCategories);$i++)
+	{?>
+
+	<option value="<?php
+	if($allSubCategories[$i]->categoryName == $_POST['category'])
+	{
+	 echo $allCategories[$i]->id;
+ }
+	 ?>"><?php echo $allCategories[$i]->categoryName;?></option>
+	<?php } ?>
 </select>
 </div>
 </div>
