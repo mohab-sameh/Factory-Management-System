@@ -1,4 +1,11 @@
-<?php include('C_InsertProduct.php');?>
+<?php
+include('C_InsertProduct.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
+include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,11 +81,12 @@ $("#suggesstion-box").hide();
 <div class="controls">
 <select name="category" class="span8 tip" onChange="getSubcat(this.value);"  required>
 <option value="">Select Category</option>
-<?php $query=mysqli_query($con,"select * from category");
-while($row=mysqli_fetch_array($query))
+<?php
+$allCategories = Category::getAllCategories();
+for ($i=0;$i<count($allCategories);$i++)
 {?>
 
-<option value="<?php echo $row['id'];?>"><?php echo $row['categoryName'];?></option>
+<option value="<?php echo $allCategories[$i]->id;?>"><?php echo $allCategories[$i]->categoryName;?></option>
 <?php } ?>
 </select>
 </div>

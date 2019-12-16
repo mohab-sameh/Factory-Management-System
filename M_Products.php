@@ -72,7 +72,13 @@ class Products
 		return $Result;
 
 	}
-
+static function insertProduct()
+{
+  $db = DB::getInstance();
+  $sql = "insert into users(name,email,contactno,password) values('$name','$email','$contactno','$password')";
+  $query=mysqli_query($db->get_Connecion(),$sql);
+  return $query;
+}
 
 }
 
