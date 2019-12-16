@@ -7,6 +7,7 @@ $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
 include_once($path);
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
 include_once($path);
+include_once('V_InsertProduct.php');
 
 $db = DB::getInstance();
 $con = $db->get_Connecion();
@@ -18,6 +19,11 @@ else{
 
 	$allCategories = Category::getAllCategories();
 	$allSubCategories = SubCategory::getAllSubCategories();
+
+if(isset($_POST['category']))
+{
+	$selectedCategory = $_POST['category'];
+}
 
 if(isset($_POST['submit']))
 {

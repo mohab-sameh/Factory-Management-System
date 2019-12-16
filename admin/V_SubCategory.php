@@ -122,14 +122,12 @@ for ($i=0;$i<count($allCategories);$i++)
 					?>
 															<tr>
 																<td><?php echo ($elements[$i]->id);?></td>
-																<td><?php
-
-																echo ($elements[$i]->categoryName);?></td>
+																<td><?php echo ($elements[$i]->categoryName);?></td>
 																<td><?php echo ($elements[$i]->subCategoryName);?></td>
 																<td> <?php echo ($elements[$i]->creationDate);?></td>
 																<td><?php echo ($elements[$i]->updationDate);?></td>
 																<td>
-																<a href="V_EditSubCategoryphp?id=<?php echo($elements[$i]->id); ?>" ><i class="icon-edit"></i></a>
+																<a href="V_EditSubCategory.php?id=<?php echo($elements[$i]->id); ?>" ><i class="icon-edit"></i></a>
 																<a href="V_SubCategory.php?id=<?php echo($elements[$i]->id); ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
 															</tr>
 															<?php $cnt=$cnt+1; } ?>

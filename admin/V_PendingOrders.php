@@ -1,4 +1,4 @@
-<?php include('C_Pending_Orders.php');?>
+<?php include('C_PendingOrders.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

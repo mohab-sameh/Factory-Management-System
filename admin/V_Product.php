@@ -1,4 +1,4 @@
-<?php include('C_Insert_Product.php');?>
+<?php include('C_InsertProduct.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

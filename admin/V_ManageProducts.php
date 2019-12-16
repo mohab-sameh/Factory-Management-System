@@ -1,5 +1,13 @@
 
-<?php include('C_Manage_Products.php');?>
+<?php
+include('C_ManageProducts.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Products.php";
+include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
+include_once($path);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,21 +60,22 @@
 									</thead>
 									<tbody>
 
-<?php $query=mysqli_query($con,"select products.*,category.categoryName,subcategory.subcategory from products join category on category.id=products.category join subcategory on subcategory.id=products.subCategory");
+<?php
 $cnt=1;
-while($row=mysqli_fetch_array($query))
+for($i=0; $i<count($products);$i++)
 {
+
 ?>
 										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($row['productName']);?></td>
-											<td><?php echo htmlentities($row['categoryName']);?></td>
-											<td> <?php echo htmlentities($row['subcategory']);?></td>
-											<td><?php echo htmlentities($row['productCompany']);?></td>
-											<td><?php echo htmlentities($row['postingDate']);?></td>
+											<td><?php echo ($products[$i]->id);?></td>
+											<td><?php echo ($products[$i]->productName);?></td>
+											<td><?php echo ($products[$i]->category);?></td>
+											<td> <?php echo ($products[$i]->subCategory);?></td>
+											<td><?php echo ($products[$i]->productCompany);?></td>
+											<td><?php echo ($products[$i]->postingDate);?></td>
 											<td>
-											<a href="V_EditProducts.php?id=<?php echo $row['id']?>" ><i class="icon-edit"></i></a>
-											<a href="V_ManageProducts.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
+											<a href="V_EditProducts.php?id=<?php echo($products[$i]->id);?>" ><i class="icon-edit"></i></a>
+											<a href="V_ManageProducts.php?id=<?php echo($products[$i]->id);?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
 										</tr>
 										<?php $cnt=$cnt+1; } ?>
 

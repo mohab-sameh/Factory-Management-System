@@ -11,6 +11,8 @@ else{
 date_default_timezone_set('Africa/Cairo');// change according timezone
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 
+$id=intval($_GET['id']);
+
 
 if(isset($_POST['submit']))
 {

@@ -98,18 +98,20 @@ for ($i=0;$i<count($allCategories);$i++)
 <div class="controls">
 <select   name="subcategory"  id="subcategory" class="span8 tip" required>
 	<option value="">Select sub category</option>
+
 	<?php
-
 	for ($i=0;$i<count($allSubCategories);$i++)
-	{?>
-
-	<option value="<?php
-	if($allSubCategories[$i]->categoryName == $_POST['category'])
 	{
-	 echo $allCategories[$i]->id;
- }
-	 ?>"><?php echo $allCategories[$i]->categoryName;?></option>
-	<?php } ?>
+		//$cat = $_POST['category'];
+		//echo($cat);
+		//if($allSubCategories[$i]->categoryName == )
+		//{
+			echo ("<option>" . $allSubCategories[$i]->subCategoryName . " </option> ");
+		//}
+	}
+	?>
+
+
 </select>
 </div>
 </div>

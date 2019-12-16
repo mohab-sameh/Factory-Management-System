@@ -1,5 +1,7 @@
 
-<?php include('C_Edit_Products.php');?>
+<?php
+include_once('C_EditProducts.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,7 @@
 function getSubcat(val) {
 	$.ajax({
 	type: "POST",
-	url: "V_GetSubcat.php",
+	url: "get_subcat.php",
 	data:'cat_id='+val,
 	success: function(data){
 		$("#subcategory").html(data);

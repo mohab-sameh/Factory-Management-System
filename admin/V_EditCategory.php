@@ -1,5 +1,5 @@
 
-<?php include('C_Edit_Category.php');?>
+<?php include('C_EditCategory.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

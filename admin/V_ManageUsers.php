@@ -1,5 +1,5 @@
 
-<?php include('C_Manage_Users.php');?>
+<?php include('C_ManageUsers.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

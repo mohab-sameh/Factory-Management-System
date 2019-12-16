@@ -44,8 +44,8 @@ include_once($path);
 
 			<form class="form-horizontal row-fluid" name="Category" method="post" >
 <?php
-$id=intval($_GET['id']);
-$query=mysqli_query($con,"select category.id,category.categoryName,subcategory.subcategory from subcategory join category on category.id=subcategory.categoryid where subcategory.id='$id'");
+
+$query=mysqli_query($con,"SELECT category.id,category.categoryName,subcategory.subcategory from subcategory join category on category.id=subcategory.categoryid where subcategory.id='$id'");
 while($row=mysqli_fetch_array($query))
 {
 ?>

@@ -1,4 +1,4 @@
-<?php include('C_Change_Password.php');?>
+<?php include('C_ChangePassword.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
