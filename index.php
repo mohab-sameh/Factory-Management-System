@@ -4,7 +4,6 @@ $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_fetchData.php";
 //echo ($path);
 include_once($path);
 
-
 ?>
 
 <!DOCTYPE html>

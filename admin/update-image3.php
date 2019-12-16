@@ -1,17 +1,5 @@
 <?php include('C_UpdateImage.php');?>
-<?php
-session_start();
-include('include/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{
-header('location:index.php');
-}
-else{
-	$pid=intval($_GET['id']);// product id
 
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

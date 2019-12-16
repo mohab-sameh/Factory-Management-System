@@ -59,10 +59,9 @@ $ret = mysqli_query($con,"SELECT * FROM ordertrackhistory WHERE orderId='$oid'")
    <?php } ?>
    <?php
 $st='Delivered';
-   $rt = mysqli_query($con,"SELECT * FROM orders WHERE id='$oid'");
-     while($num=mysqli_fetch_array($rt))
-     {
-     $currrentSt=$num['orderStatus'];
+foreach($orders as $order)
+{
+     $currrentSt=$order->orderStatus;
    }
      if($st==$currrentSt)
      { ?>
