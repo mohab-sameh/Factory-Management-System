@@ -1,5 +1,5 @@
 <?php
-include('C_SubCategory.php');
+include_once('C_SubCategory.php');
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
 include_once($path);
 ?>
