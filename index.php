@@ -1,9 +1,8 @@
 <?php
 //include('C_fetchData.php');
-$path =  "C_fetchData.php";
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_fetchData.php";
 //echo ($path);
 include_once($path);
-
 
 ?>
 
