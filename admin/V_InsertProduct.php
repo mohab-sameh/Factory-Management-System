@@ -82,7 +82,7 @@ $("#suggesstion-box").hide();
 <select name="category" class="span8 tip" onChange="getSubcat(this.value);"  required>
 <option value="">Select Category</option>
 <?php
-$allCategories = Category::getAllCategories();
+
 for ($i=0;$i<count($allCategories);$i++)
 {?>
 

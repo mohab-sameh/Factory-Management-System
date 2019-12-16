@@ -1,7 +1,11 @@
 
 <?php
+
 session_start();
 include('../DB.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
+
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 if(strlen($_SESSION['alogin'])==0)
@@ -9,6 +13,8 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{
+
+	$allCategories = Category::getAllCategories();
 
 if(isset($_POST['submit']))
 {
