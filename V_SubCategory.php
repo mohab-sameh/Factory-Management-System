@@ -1,4 +1,8 @@
-<?php include('C_SubCategory.php'); ?>
+<?php
+include('C_SubCategory.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
+include_once($path);
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -83,15 +87,16 @@
 		<h4 class="widget-title">Category</h4>
 	</div>
 	<div class="sidebar-widget-body m-t-10">
-	         <?php $sql=mysqli_query($con,"select id,categoryName  from category");
-while($row=mysqli_fetch_array($sql))
+	         <?php
+					 $allCats = Category::getAllCategories();
+for($i=0; i<count($allCats); $i++)
 {
     ?>
 		<div class="accordion">
 	    	<div class="accordion-group">
 	            <div class="accordion-heading">
-	                <a href="V_Category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
-	                   <?php echo $row['categoryName'];?>
+	                <a href="V_Category.php?cid=<?php echo $allCats[$i]->id ?>"  class="accordion-toggle collapsed">
+	                   <?php echo $allCats[$i]->categoryName;?>
 	                </a>
 	            </div>
 	        </div>
@@ -122,13 +127,14 @@ while($row=mysqli_fetch_array($sql))
 						<br />
 					</div>
 
-					       <?php $sql=mysqli_query($con,"select subcategory  from subcategory where id='$cid'");
-while($row=mysqli_fetch_array($sql))
+					       <?php
+								 $allSubs = SubCategory::getAllSubCategoriesForCategoryByID($cid);
+for($i=0; i<count($allSubs); $i++)
 {
     ?>
 
 					<div class="excerpt hidden-sm hidden-md">
-						<?php echo htmlentities($row['subcategory']);?>
+						<?php echo htmlentities($allSubs[$i]->subCategory);?>
 					</div>
 			<?php } ?>
 

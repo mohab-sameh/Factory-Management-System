@@ -1,7 +1,13 @@
 
 <?php
-include('C_SubCategory.php');
-//include('V_EditSubCategory.php');
+//include_once('C_SubCategory.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
+include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
+include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
+include_once('C_SubCategory.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +41,7 @@ include('C_SubCategory.php');
 {?>
 									<div class="alert alert-success">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Well done!</strong>	<?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?>
+									<strong>Well done!</strong>	<?php echo htmlentities($message);?><?php echo htmlentities($_SESSION['msg']="");?>
 									</div>
 <?php } ?>
 
@@ -52,16 +58,18 @@ include('C_SubCategory.php');
 
 			<form class="form-horizontal row-fluid" name="subcategory" method="post" >
 
+
 <div class="control-group">
 <label class="control-label" for="basicinput">Category</label>
 <div class="controls">
 <select name="category" class="span8 tip" required>
 <option value="">Select Category</option>
-<?php $query=mysqli_query($con,"select * from category");
-while($row=mysqli_fetch_array($query))
+<?php
+$allCategories = Category::getAllCategories();
+for ($i=0;$i<count($allCategories);$i++)
 {?>
 
-<option value="<?php echo $row['id'];?>"><?php echo $row['categoryName'];?></option>
+<option value="<?php echo $allCategories[$i]->id;?>"><?php echo $allCategories[$i]->categoryName;?></option>
 <?php } ?>
 </select>
 </div>
@@ -87,44 +95,51 @@ while($row=mysqli_fetch_array($query))
 						</div>
 
 
-	<div class="module">
-							<div class="module-head">
-								<h3>Sub Category</h3>
-							</div>
-							<div class="module-body table">
-								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Category</th>
-											<th>Description</th>
-											<th>Creation date</th>
-											<th>Last Updated</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
+						<div class="module">
+												<div class="module-head">
+													<h3>Sub Category</h3>
+												</div>
+												<div class="module-body table">
+													<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>Category</th>
+																<th>Description</th>
+																<th>Creation date</th>
+																<th>Last Updated</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
 
-<?php $query=mysqli_query($con,"select subcategory.id,category.categoryName,subcategory.subcategory,subcategory.creationDate,subcategory.updationDate from subcategory join category on category.id=subcategory.categoryid");
-$cnt=1;
-while($row=mysqli_fetch_array($query))
-{
-?>
-										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($row['categoryName']);?></td>
-											<td><?php echo htmlentities($row['subcategory']);?></td>
-											<td> <?php echo htmlentities($row['creationDate']);?></td>
-											<td><?php echo htmlentities($row['updationDate']);?></td>
-											<td>
-											<a href="V_EditSubCategory.php?id=<?php echo $row['id']?>" ><i class="icon-edit"></i></a>
-											<a href="V_SubCategory.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
-										</tr>
-										<?php $cnt=$cnt+1; } ?>
+					<?php
 
-								</table>
-							</div>
-						</div>
+					$elements = SubCategory::getJointSubCategories();
+					$cnt=1;
+					for($i=0; $i<count($elements); $i++)
+					{
+					?>
+															<tr>
+																<td><?php echo ($cnt);?></td>
+																<?php
+																$catname = $elements[$i]->categoryID;
+																$catname = Category::getCategoryWithID($catname);
+																$catname = $catname->categoryName;
+																?>
+																<td><?php echo ($catname);?></td>
+																<td><?php echo ($elements[$i]->subCategoryName);?></td>
+																<td> <?php echo ($elements[$i]->creationDate);?></td>
+																<td><?php echo ($elements[$i]->updationDate);?></td>
+																<td>
+																<a href="V_EditSubCategoryphp?id=<?php echo($elements[$i]->id); ?>" ><i class="icon-edit"></i></a>
+																<a href="V_SubCategory.php?id=<?php echo($elements[$i]->id); ?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"><i class="icon-remove-sign"></i></a></td>
+															</tr>
+															<?php $cnt=$cnt+1; } ?>
+
+													</table>
+												</div>
+											</div>
 
 
 

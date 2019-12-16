@@ -1,4 +1,5 @@
 <?php
+include_once('DB.php');
 class Category
 {
   public $id;
@@ -16,6 +17,13 @@ class Category
     $this->updateDate= "date";
   }
 
+static function deleteCategory($categoryName)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql ="DELETE * FROM category WHERE categoryName='$categoryName'";
+  $query=mysqli_query($con,$sql);
+}
 
 function getCategoryName()
 {
@@ -106,6 +114,8 @@ static function getAllCategories()
   }
   return $categories;
 }
+
+
 
 }
 

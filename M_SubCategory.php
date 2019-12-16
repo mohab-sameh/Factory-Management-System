@@ -1,5 +1,6 @@
 <?php
-include('M_Category.php');
+include_once('M_Category.php');
+require_once('DB.php');
 
 class SubCategory
 {
@@ -14,7 +15,6 @@ function __construct()
   $this->subCategoryName = "subcategory name";
   $this->categoryID = "parent category ID";
   $this->creationDate= "date";
-  $this->updateDate= "date";
 }
 
 
@@ -60,10 +60,10 @@ return $category;
 }
 
 
-static function addSubCategory($id, $categoryID, $subCategoryName, $creationDate, $updateDate)
+static function addSubCategory($categoryID, $subCategoryName, $creationDate)
 {
 $db = DB::getInstance();
-$sql = "insert into subcategory (id, categoryid, subcategory, creationDate, updateDate) values('$id', '$categoryID', '$subCategoryName', '$creationDate', '$updateDate')";
+$sql = "insert into subcategory (categoryid, subcategory, creationDate) values('$categoryID', '$subCategoryName', '$creationDate')";
 $query=mysqli_query($db->get_Connecion(),$sql);
 return $query;
 }
@@ -147,6 +147,26 @@ while($row=mysqli_fetch_array($query))
   array_push($categories,$category);
 }
 return $categories;
+}
+
+static function getJointSubCategories()
+{
+
+  $db = DB::getInstance();
+  $sql="SELECT subcategory.id,category.categoryName,subcategory.subcategory,subcategory.creationDate,subcategory.updationDate FROM subcategory JOIN category ON category.id=subcategory.categoryid";
+  $categories = array();
+  $query=$db->selectFromTable("subcategory", "category");
+  while($row=mysqli_fetch_array($query))
+  {
+    $category = new SubCategory();
+    $category->id = $row['id'];
+    $category->categoryID = $row['categoryid'];
+    $category->subCategoryName  = $row['subcategory'];
+    $category->creationDate = $row['creationDate'];
+    $category->updationDate = $row['updationDate'];
+    array_push($categories,$category);
+  }
+  return $categories;
 }
 
 }

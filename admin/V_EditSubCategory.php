@@ -1,5 +1,7 @@
-<?php include_once('C_SubCategory.php');
-include_once('../DB.php');?>
+<?php include('C_EditSubCategory.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
+include_once($path);
+?>
 
 <!DOCTYPE html>
 <html lang="en">

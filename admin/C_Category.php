@@ -2,6 +2,7 @@
 <?php
 session_start();
 include('../DB.php');
+include_once('V_Category.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 if(strlen($_SESSION['alogin'])==0)
@@ -24,6 +25,8 @@ $_SESSION['msg']="Category Created !!";
 
 if(isset($_GET['del']))
 		  {
+				//Category::deleteCategory($_GET['id']);
+
 		          mysqli_query($con,"delete from category where id = '".$_GET['id']."'");
                   $_SESSION['delmsg']="Category deleted !!";
 		  }
