@@ -72,10 +72,10 @@ class Products
 		return $Result;
 
 	}
-static function insertProduct()
+static function insertProduct($category,$subCategory,$productName,$productCompany,$productPrice,$productBeforeDiscount,$productDescription,$productImage1,$productImage2,$productImage3,$shippingCharge,$productAvailability,$postingDate,$updateDate)
 {
   $db = DB::getInstance();
-  $sql = "insert into users(name,email,contactno,password) values('$name','$email','$contactno','$password')";
+  $sql = "INSERT into products(category,subCategory,productName,productCompany,productPrice,productBeforeDiscount,productDescription,productImage1,productImage2,productImage3,shippingCharge,productAvailability,postingDate,updateDate) values('$category','$subCategory','$productName','$productCompany','$productPrice','$productBeforeDiscount','$productDescription','$productImage1','$productImage2','$productImage3','$shippingCharge','$productAvailability','$postingDate','$updateDate')";
   $query=mysqli_query($db->get_Connecion(),$sql);
   return $query;
 }
