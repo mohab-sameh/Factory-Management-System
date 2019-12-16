@@ -1,4 +1,4 @@
-<?php include('C_UpdateImage.php');?>
+<?php include('C_Update_Image.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
