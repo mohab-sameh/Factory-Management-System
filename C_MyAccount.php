@@ -11,6 +11,7 @@ header('location:index.php');
 }
 else{
   $user = User::GetWithID($_SESSION['id']);
+  echo $user->name ;
 	if(isset($_POST['update']))
 	{
 		$name=$_POST['name'];

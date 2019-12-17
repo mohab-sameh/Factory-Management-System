@@ -53,18 +53,24 @@ header('location:V_Login.php');
 else{
 
 	$quantity=$_POST['quantity'];
+	$user = User::GetWithID($_SESSION['id']);
+  echo $user->name;
 	$pdd=$_SESSION['pid'];
 	$value=array_combine($pdd,$quantity);
 
 
-		foreach($value as $qty=> $val34){
+		foreach($value as $qty=> $val){
 
-
-
-mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$_SESSION['id']."','$qty','$val34')");
+   $User->MakeOrder($qty,$val);
 header('location:V_PaymentMethod.php');
 }
+
+
 }
+
+
+
+
 }
 
 
