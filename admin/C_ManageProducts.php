@@ -24,8 +24,13 @@ $currentTime = date( 'd-m-Y h:i:s A', time () );
 
 if(isset($_GET['del']))
 		  {
-		          mysqli_query($con,"DELETE from products where id = '".$_GET['id']."'");
-                  $_SESSION['delmsg']="Product deleted !!";
+				$id =$_GET['id'];
+				$id = intval($id);
+				$query = Products::removeProductByID($id);
+				if($query)
+				{
+					$_SESSION['delmsg']="Product deleted !!";
+				}
 		  }
 }
 

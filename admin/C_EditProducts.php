@@ -1,7 +1,8 @@
 
 <?php
 session_start();
-include('../DB.php');
+include_once('../DB.php');
+//include_once('V_EditProducts.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 

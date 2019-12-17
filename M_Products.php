@@ -113,15 +113,17 @@ static function getAllProductsDetails()
 }
 
 
-public static function getAvailableProductID()
+
+public static function getNextAutoIncrement()
 {
   $db = DB::getInstance();
-  $sql="SELECT select max(id) as pid from products";
-  $query=$db->selectFromTable("products");
-  $result=mysqli_fetch_array($query);
-	//$productid=$result['pid']+1;
-  $result = intval($result) +1;
-  return $result;
+  $con = $db->get_Connecion();
+  $sql ="SELECT max(id) as pid from products";
+  $query=mysqli_query($con,$sql);
+  $row = mysqli_fetch_assoc($query);
+  $maxid = $row['pid'];
+  $maxid = $maxid +1;
+  return $maxid;
 }
 
 public static function insertNewProduct($productid, $category,$subcat,$productname,$productcompany,$productprice,$productdescription,$productscharge,$productavailability,$productimage1,$productimage2,$productimage3,$productpricebd)
@@ -130,6 +132,25 @@ public static function insertNewProduct($productid, $category,$subcat,$productna
   $sql="INSERT into products(id, category,subCategory,productName,productCompany,productPrice,productDescription,shippingCharge,productAvailability,productImage1,productImage2,productImage3,productPriceBeforeDiscount) values('$productid','$category','$subcat','$productname','$productcompany','$productprice','$productdescription','$productscharge','$productavailability','$productimage1','$productimage2','$productimage3','$productpricebd')";
   $query=mysqli_query($db->get_Connecion(),$sql);
   return 'success';
+}
+
+
+public static function removeProductByName($name)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql = "DELETE FROM products WHERE productName='$name'";
+  $query= mysqli_query($con,$sql);
+  return $query;
+}
+
+public static function removeProductByID($id)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql = "DELETE FROM products WHERE id='$id'";
+  $query= mysqli_query($con,$sql);
+  return $query;
 }
 
 }

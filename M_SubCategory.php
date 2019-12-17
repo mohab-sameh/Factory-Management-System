@@ -67,7 +67,8 @@ return $category;
 static function addSubCategory($categoryID, $categoryName, $subCategoryName, $creationDate)
 {
 $db = DB::getInstance();
-$sql = "INSERT INTO subcategory (categoryid, categoryname, subcategory, creationDate) VALUES('$categoryID', '$categoryName', '$subCategoryName', '$creationDate')";
+$maxid = SubCategory::getNextAutoIncrement();
+$sql = "INSERT INTO subcategory (id, categoryid, categoryname, subcategory, creationDate) VALUES('$maxid','$categoryID', '$categoryName', '$subCategoryName', '$creationDate')";
 $query=mysqli_query($db->get_Connecion(),$sql);
 }
 
@@ -188,6 +189,20 @@ static function getJointSubCategories()
   }
   return $categories;
 }
+
+public static function getNextAutoIncrement()
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql ="SELECT max(id) as pid from subCategory";
+  $query=mysqli_query($con,$sql);
+  $row = mysqli_fetch_assoc($query);
+  $maxid = $row['pid'];
+  $maxid = $maxid +1;
+  return $maxid;
+}
+
+
 
 }
 ?>

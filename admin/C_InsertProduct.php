@@ -44,9 +44,8 @@ if(isset($_POST['submit']))
 
 //for getting product id
 
-	 $productid=Products::getAvailableProductID();
-	 echo($productid);
-	 $productid = intval($productid);
+	 $productid=Products::getNextAutoIncrement();
+	 //echo($productid);
 	$dir="productimages/$productid";
 
 if(!is_dir($dir)){
@@ -62,6 +61,9 @@ $case = Products::insertNewProduct($productid,$category,$subcat,$productname,$pr
 if($case == 'success')
 {
 	$_SESSION['msg']="Product Inserted Successfully !!";
+}
+else {
+	echo("error caught");
 }
 
 }

@@ -54,7 +54,7 @@ Attached to non-field element, using events to work with the date values.
 
 ```html
 <div class="alert alert-error" id="alert">
-    <strong>Oh snap!</strong>
+    <strong>!!</strong>
 </div>
 <table class="table">
     <thead>

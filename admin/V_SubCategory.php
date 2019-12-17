@@ -41,7 +41,7 @@ include_once('C_SubCategory.php');
 {?>
 									<div class="alert alert-success">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Well done!</strong>	<?php echo htmlentities($message);?><?php echo htmlentities($_SESSION['msg']="");?>
+									<strong>!!</strong>	<?php echo htmlentities($message);?><?php echo htmlentities($_SESSION['msg']="");?>
 									</div>
 <?php } ?>
 
@@ -50,7 +50,7 @@ include_once('C_SubCategory.php');
 {?>
 									<div class="alert alert-error">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Oh snap!</strong> 	<?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?>
+									<strong>!!</strong> 	<?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?>
 									</div>
 <?php } ?>
 
@@ -115,7 +115,7 @@ for ($i=0;$i<count($allCategories);$i++)
 
 					<?php
 
-					$elements = SubCategory::getAllSubCategories();
+					
 					$cnt=1;
 					for($i=0; $i<count($elements); $i++)
 					{

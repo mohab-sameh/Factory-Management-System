@@ -1,7 +1,6 @@
 
 <?php
-$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/C_Category.php";
-include_once($path);
+include_once('C_Category.php');
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
 include_once($path);
 ?>
@@ -37,7 +36,7 @@ include_once($path);
 {?>
 									<div class="alert alert-success">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Well done!</strong>	<?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?>
+									<strong>!!</strong>	<?php echo htmlentities($_SESSION['msg']);?><?php echo htmlentities($_SESSION['msg']="");?>
 									</div>
 <?php } ?>
 
@@ -46,7 +45,7 @@ include_once($path);
 {?>
 									<div class="alert alert-error">
 										<button type="button" class="close" data-dismiss="alert">×</button>
-									<strong>Oh snap!</strong> 	<?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?>
+									<strong>!!</strong> 	<?php echo htmlentities($_SESSION['delmsg']);?><?php echo htmlentities($_SESSION['delmsg']="");?>
 									</div>
 <?php } ?>
 
@@ -84,7 +83,7 @@ include_once($path);
 <div>
 	<h3>Manage Categories</h3>
 	<?php
-	$arr = Category::getAllCategories();
+
 	function html_table($data = array())
 	{
 	    $rows = array();

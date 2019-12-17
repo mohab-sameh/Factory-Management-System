@@ -7,6 +7,11 @@ include_once($path);
 
 $db = DB::getInstance();
 $con = $db->get_Connecion();
+
+
+$elements = SubCategory::getAllSubCategories();
+
+
 if(strlen($_SESSION['alogin'])==0)
 	{
 header('location:index.php');

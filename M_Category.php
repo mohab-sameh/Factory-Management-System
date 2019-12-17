@@ -95,6 +95,15 @@ static function updateCategory($categoryName, $categoryDescription)
     return $query;
 }
 
+  static function removeCategoryByID($id)
+  {
+    $db = DB::getInstance();
+    $con = $db->get_Connecion();
+    $sql = "DELETE FROM category WHERE id='$id'";
+    $query= mysqli_query($con,$sql);
+    return $query;
+}
+
 static function getAllCategories()
 {
 
@@ -115,6 +124,25 @@ static function getAllCategories()
   return $categories;
 }
 
+public static function getNextAutoIncrement()
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql ="SELECT max(id) as pid from category";
+  $query=mysqli_query($con,$sql);
+  $row = mysqli_fetch_assoc($query);
+  $maxid = $row['pid'];
+  $maxid = $maxid +1;
+  return $maxid;
+}
+
+public static function insertNewCategory($id, $categoryName, $categoryDescription)
+{
+  $db = DB::getInstance();
+  $sql="INSERT into category(id,categoryName,categoryDescription) values('$id', '$categoryName', '$categoryDescription')";
+  $query=mysqli_query($db->get_Connecion(),$sql);
+  return 'success';
+}
 
 
 }
