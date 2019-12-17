@@ -114,15 +114,16 @@ for($i=0; $i<count($allSubCategories); $i++)
 		<h4 class="widget-title">Category</h4>
 	</div>
 	<div class="sidebar-widget-body m-t-10">
-	         <?php $sql=mysqli_query($con,"select id,categoryName  from category");
-while($row=mysqli_fetch_array($sql))
+	         <?php
+
+for($i=0; $i<count($allCategories); $i++)
 {
     ?>
 		<div class="accordion">
 	    	<div class="accordion-group">
 	            <div class="accordion-heading">
-	                <a href="V_Category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
-	                   <?php echo $row['categoryName'];?>
+	                <a href="V_Category.php?cid=<?php echo($allCategories[$i]->id);?>"  class="accordion-toggle collapsed">
+	                   <?php echo($allCategories[$i]->categoryName);?>
 	                </a>
 	            </div>
 	        </div>
@@ -153,7 +154,10 @@ while($row=mysqli_fetch_array($sql))
 						<br />
 					</div>
 
-					       <?php $sql=mysqli_query($con,"select categoryName  from category where id='$cid'");
+					       <?php
+								 $category = Category::getAllCategories();
+								 $categoryname = $category->categoryName;
+								  $sql=mysqli_query($con,"select categoryName  from category where id='$cid'");
 while($row=mysqli_fetch_array($sql))
 {
     ?>

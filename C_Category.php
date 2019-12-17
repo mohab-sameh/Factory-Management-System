@@ -10,6 +10,8 @@ $con = $db->get_Connecion();
 $cid=intval($_GET['cid']);
 $allSubCategories = SubCategory::getAllSubCategoriesForCategoryByID($cid);
 //echo htmlentities("<br><br><br><br><br><br><br>". $cid. "<br>");
+$allCategories = Category::getAllCategories();
+
 
 
 
