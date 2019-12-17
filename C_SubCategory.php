@@ -2,7 +2,9 @@
 session_start();
 error_reporting(0);
 require_once 'DB.php';
-include('M_V_SubCategory.php');
+include('V_SubCategory.php');
+include('M_SubCategory.php');
+include('M_Category.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 
@@ -17,7 +19,8 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 	}
 	else
 	{
-		$sql_p= SubCategory::getSubCategoryWithID($id);
+		//$sql_p= SubCategory::getSubCategoryWithID($id);
+		$sql_p="SELECT * FROM products WHERE id={$id}";
 		$query_p=mysqli_query($con,$sql_p);
 		if(mysqli_num_rows($query_p)!=0)
 		{
