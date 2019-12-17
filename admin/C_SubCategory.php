@@ -12,6 +12,12 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{
+
+
+
+$allCategories = Category::getAllCategories();
+
+
 if(isset($_POST['submit']))
 {
 
@@ -30,8 +36,9 @@ $message=$_SESSION['msg'];
 
 if(isset($_GET['del']))
 		  {
-		          mysqli_query($con,"delete from subcategory where id = '".$_GET['id']."'");
-                  $_SESSION['delmsg']="SubCategory deleted !!";
+				$id =$_GET['id'];
+				SubCategory::removeSubCategoryByID($id);
+        $_SESSION['delmsg']="SubCategory deleted !!";
 		  }
 }
 ?>

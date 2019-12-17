@@ -58,13 +58,13 @@ foreach($users as $user)
 {
 ?>
 										<tr>
-											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($user->name);?></td>
-											<td><?php echo htmlentities($user->email);?></td>
-											<td> <?php echo htmlentities($user->contactNo);?></td>
-											<td><?php echo htmlentities($user->shippingAddress.",".$user->shippingCity.",".$user->shippingState."-".$user->shippingPinCode);?></td>
-											<td><?php echo htmlentities($user->billingAddress.",".$user->billingCity.",".$user->billingState."-".$user->billingPinCode);?></td>
-											<td><?php echo htmlentities($user->regDate);?></td>
+											<td><?php echo ($cnt);?></td>
+											<td><?php echo ($user->name);?></td>
+											<td><?php echo ($user->email);?></td>
+											<td> <?php echo ($user->contactNo);?></td>
+											<td><?php echo ($user->shippingAddress.",".$user->shippingCity.",".$user->shippingState."-".$user->shippingPinCode);?></td>
+											<td><?php echo ($user->billingAddress.",".$user->billingCity.",".$user->billingState."-".$user->billingPinCode);?></td>
+											<td><?php echo ($user->regDate);?></td>
 
 										<?php $cnt=$cnt+1; } ?>
 

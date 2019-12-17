@@ -65,7 +65,7 @@ include_once('C_SubCategory.php');
 <select name="category" class="span8 tip" required>
 <option value="">Select Category</option>
 <?php
-$allCategories = Category::getAllCategories();
+
 for ($i=0;$i<count($allCategories);$i++)
 {?>
 

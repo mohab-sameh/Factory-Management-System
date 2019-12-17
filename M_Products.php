@@ -112,6 +112,26 @@ static function getAllProductsDetails()
 
 }
 
+
+public static function getAvailableProductID()
+{
+  $db = DB::getInstance();
+  $sql="SELECT select max(id) as pid from products";
+  $query=$db->selectFromTable("products");
+  $result=mysqli_fetch_array($query);
+	//$productid=$result['pid']+1;
+  $result = intval($result) +1;
+  return $result;
+}
+
+public static function insertNewProduct($productid, $category,$subcat,$productname,$productcompany,$productprice,$productdescription,$productscharge,$productavailability,$productimage1,$productimage2,$productimage3,$productpricebd)
+{
+  $db = DB::getInstance();
+  $sql="INSERT into products(id, category,subCategory,productName,productCompany,productPrice,productDescription,shippingCharge,productAvailability,productImage1,productImage2,productImage3,productPriceBeforeDiscount) values('$productid','$category','$subcat','$productname','$productcompany','$productprice','$productdescription','$productscharge','$productavailability','$productimage1','$productimage2','$productimage3','$productpricebd')";
+  $query=mysqli_query($db->get_Connecion(),$sql);
+  return 'success';
+}
+
 }
 
  ?>

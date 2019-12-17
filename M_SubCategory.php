@@ -82,11 +82,20 @@ $query= mysqli_query($con,$sql);
 return $query;
 }
 
-static function removeSubCategory($id)
+static function removeSubCategoryByName($name)
 {
   $db = DB::getInstance();
   $con = $db->get_Connecion();
   $sql = "DELETE FROM subcategory WHERE subcategory='$subCategoryName'";
+  $query= mysqli_query($con,$sql);
+  return $query;
+}
+
+static function removeSubCategoryByID($id)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql = "DELETE FROM subcategory WHERE id='$id'";
   $query= mysqli_query($con,$sql);
   return $query;
 }
