@@ -1,17 +1,10 @@
 <?php
 
- if(isset($_Get['action'])){
-		if(!empty($_SESSION['cart'])){
-		foreach($_POST['quantity'] as $key => $val){
-			if($val==0){
-				unset($_SESSION['cart'][$key]);
-			}else{
-				$_SESSION['cart'][$key]['quantity']=$val;
-			}
-		}
-		}
-	}
+include_once('C_MainHeader.php');
+
 ?>
+
+
 	<div class="main-header">
 		<div class="container">
 			<div class="row">
@@ -42,7 +35,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
 					<!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
 <?php
-if(!empty($_SESSION['cart'])){
+if(MainHeaderController::ifCartSession()){
 	?>
 	<div class="dropdown dropdown-cart">
 		<a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
@@ -51,36 +44,34 @@ if(!empty($_SESSION['cart'])){
 					<span class="lbl">cart -</span>
 					<span class="total-price">
 						<span class="sign">EGP</span>
-						<span class="value"><?php echo $_SESSION['tp']; ?></span>
+						<span class="value"><?php echo(MainHeaderController::returnTP()); ?></span>
 					</span>
 				</div>
 				<div class="basket">
 					<i class="glyphicon glyphicon-shopping-cart"></i>
 				</div>
-				<div class="basket-item-count"><span class="count"><?php echo $_SESSION['qnty'];?></span></div>
+				<div class="basket-item-count"><span class="count"><?php echo(MainHeaderController::returnQnty());?></span></div>
 
 		    </div>
 		</a>
 		<ul class="dropdown-menu">
 
 		 <?php
-    $sql = "SELECT * FROM products WHERE id IN(";
-			foreach($_SESSION['cart'] as $id => $value){
-			$sql .=$id. ",";
-			}
-			$sql=substr($sql,0,-1) . ") ORDER BY id ASC";
-			$query = mysqli_query($con,$sql);
-			$totalprice=0;
-			$totalqunty=0;
-			if(!empty($query)){
-			while($row = mysqli_fetch_array($query)){
-				$quantity=$_SESSION['cart'][$row['id']]['quantity'];
-				$subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];
-				$totalprice += $subtotal;
-				$_SESSION['qnty']=$totalqunty+=$quantity;
-
-	?>
-
+     $sql = "SELECT * FROM products WHERE id IN(";
+       foreach($_SESSION['cart'] as $id => $value){
+       $sql .=$id. ",";
+       }
+       $sql=substr($sql,0,-1) . ") ORDER BY id ASC";
+       $query = mysqli_query($con,$sql);
+       $totalprice=0;
+       $totalqunty=0;
+       if(!empty($query)){
+       while($row = mysqli_fetch_array($query)){
+         $quantity=$_SESSION['cart'][$row['id']]['quantity'];
+         $subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];
+         $totalprice += $subtotal;
+         $_SESSION['qnty']=$totalqunty+=$quantity;
+         ?>
 
 			<li>
 				<div class="cart-item product-summary">
