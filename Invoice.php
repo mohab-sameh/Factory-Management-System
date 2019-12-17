@@ -29,7 +29,7 @@ public  function WrapInvoice($invoice)
   {
 
   $this->invoice = $invoice;
-echo ",".$this->invoice->price;
+
   }
 public function Calculate_TotalPrice()
 {
@@ -40,8 +40,8 @@ public function Calculate_TotalPrice()
 }
 public function Get_TotalPrice()
 {
-       echo "is ks0";
-       echo $this->invoice->price;
+
+
    return $this->totalprice + $this->invoice->Get_TotalPrice();
 }
 

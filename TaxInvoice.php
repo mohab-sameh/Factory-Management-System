@@ -2,7 +2,7 @@
 
 
 
-class Tax_Invoice extends M_Invoice
+class Tax_Invoice extends M_Invoice implements Iinvoice
 {
     public $pid;
     public function Calculate_Tax()
@@ -14,7 +14,7 @@ class Tax_Invoice extends M_Invoice
 
     function Get_TotalPrice()
     {
-       echo "is ks3";
+
 
           return $this->totalprice ;
     }

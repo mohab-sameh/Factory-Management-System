@@ -1,6 +1,6 @@
 <?php
 
-class Shipping_Invoice extends M_Invoice
+class Shipping_Invoice extends M_Invoice implements Iinvoice
 {
     public $pid;
     public function Get_Price()
@@ -12,7 +12,7 @@ class Shipping_Invoice extends M_Invoice
 
         public function Get_TotalPrice()
         {
-                 echo "is ks2";
+
           return $this->totalprice + $this->invoice->Get_TotalPrice() ;
         }
 
