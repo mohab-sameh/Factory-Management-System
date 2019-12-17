@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 
-include('DB.php');
+require_once 'DB.php';
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 

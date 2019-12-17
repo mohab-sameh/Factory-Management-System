@@ -9,7 +9,7 @@ public $categoryID;
 public $subCategoryName;
 public $creationDate;
 public $updateDate;
-
+public $categoryName;
 
 function __construct()
 {
@@ -41,7 +41,7 @@ $category->categoryID = $row['categoryid'];
 $category->subCategoryName  = $row['subcategory'];
 $category->creationDate = $row['creationDate'];
 $category->updationDate = $row['updationDate'];
-
+$category->categoryName = $row['categoryname'];
 
 return $category;
 }
@@ -59,7 +59,7 @@ $category->categoryID = $row['categoryid'];
 $category->subCategoryName  = $row['subcategory'];
 $category->creationDate = $row['creationDate'];
 $category->updationDate = $row['updationDate'];
-
+$category->categoryName = $row['categoryname'];
 return $category;
 }
 
@@ -116,7 +116,7 @@ while($row=mysqli_fetch_array($query))
   $category->subCategoryName  = $row['subcategory'];
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
-
+  $category->categoryName = $row['categoryname'];
 
   array_push($categories,$category);
 }
@@ -139,7 +139,7 @@ while($row=mysqli_fetch_array($query))
   $category->subCategoryName  = $row['subcategory'];
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
-
+  $category->categoryName = $row['categoryname'];
 
   array_push($categories,$category);
 }
@@ -166,7 +166,7 @@ while($row=mysqli_fetch_array($query))
   //echo "<script type='text/javascript'>alert('$category->subCategoryName');</script>";
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
-
+  $category->categoryName = $row['categoryname'];
 
   array_push($categories,$category);
   }

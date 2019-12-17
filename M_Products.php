@@ -27,6 +27,32 @@ class Products
 	{
     $db = DB::getInstance();
     $con = $db->get_Connecion();
+    if ($id !="")
+    {
+      $sql="select * from products where ID=$id";
+      $StudentDataSet = mysql_query($sql) or die(mysql_error());
+      if ($row = mysql_fetch_array($StudentDataSet))
+      {
+            $this->id = $id;
+            $this->category=$row["category"];
+            $this->subCategory =$row["subcategory"];
+            $this->productName =$row["productName"];
+            $this->productCompany =$row["productCompany"];
+            $this->productPrice =$row["productPrice"];
+            $this->productBeforeDiscount =$row["productpricebeforediscount"];
+            $this->productDescription =$row["productDescription"];
+            $this->productImage1 =$row["productImage1"];
+            $this->productImage2 =$row["productImage2"];
+            $this->productImage3 =$row["productImage3"];
+            $this->shippingCharge =$row["shippingCharge"];
+            $this->productAvailability =$row["productAvailability"];
+            $this->postingDate =$row["postingDate"];
+            $this->updateDate =$row["updationDate"];
+
+
+      }
+    }
+  }
 
     static function GetProductsbyID($pidarr)
     {
@@ -62,33 +88,9 @@ class Products
         }
         return $products;
     }
-		if ($id !="")
-		{
-			$sql="select * from products where ID=$id";
-			$StudentDataSet = mysql_query($sql) or die(mysql_error());
-			if ($row = mysql_fetch_array($StudentDataSet))
-			{
-            $this->id = $id;
-            $this->category=$row["category"];
-            $this->subCategory =$row["subcategory"];
-            $this->productName =$row["productName"];
-            $this->productCompany =$row["productCompany"];
-            $this->productPrice =$row["productPrice"];
-            $this->productBeforeDiscount =$row["productpricebeforediscount"];
-            $this->productDescription =$row["productDescription"];
-            $this->productImage1 =$row["productImage1"];
-            $this->productImage2 =$row["productImage2"];
-            $this->productImage3 =$row["productImage3"];
-            $this->shippingCharge =$row["shippingCharge"];
-            $this->productAvailability =$row["productAvailability"];
-            $this->postingDate =$row["postingDate"];
-            $this->updateDate =$row["updationDate"];
 
 
 
-			}
-		}
-	}
 
 
   public static function selectAllProducts()
