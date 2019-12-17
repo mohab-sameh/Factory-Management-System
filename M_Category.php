@@ -66,6 +66,28 @@ static function getCategoryWithID($id)
   return $category;
 }
 
+static function getAllCategoriesWithID($id)
+{
+  $db = DB::getInstance();
+  $sql = "SELECT * FROM category";
+  $categories = array();
+  $query=$db->selectFromTable("category");
+  while($row=mysqli_fetch_array($query))
+  {
+    if($row['id'] == $id)
+    {
+    $category = new Category();
+    $category->id = $row['id'];
+    $category->categoryName  = $row['categoryName'];
+    $category->categoryDescription = $row['categoryDescription'];
+    $category->creationDate = $row['creationDate'];
+    $category->updationDate = $row['updationDate'];
+    array_push($categories,$category);
+    }
+  }
+  return $categories;
+}
+
 
 static function addCategory($categoryID, $categoryName, $categoryDescription, $creationDate, $updateDate)
 {
