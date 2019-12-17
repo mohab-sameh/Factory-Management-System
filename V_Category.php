@@ -92,14 +92,13 @@ $con = $db->get_Connecion();
             <li class="dropdown menu-item">
               <?php
 
-							$sql=mysqli_query($con,"select id,subcategory  from subcategory where categoryid='$cid'");
 
-while($row=mysqli_fetch_array($sql))
+for($i=0; $i<count($allSubCategories); $i++)
 {
     ?>
-                <a href="V_SubCategory.php?scid=<?php echo $row['id'];?>" class="dropdown-toggle"><i class="icon fa fa-desktop fa-fw"></i>
-                <?php echo $row['subcategory'];?></a>
-                <?php }?>
+                <a href="V_SubCategory.php?scid=<?php echo($allSubCategories[$i]->id)?>" class="dropdown-toggle"><i class="icon fa fa-desktop fa-fw"></i>
+                <?php echo($allSubCategories[$i]->subCategoryName); ?></a>
+							<?php  }?>
 
 </li>
 </ul>

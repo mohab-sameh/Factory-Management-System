@@ -148,22 +148,28 @@ return $categories;
 
 static function getAllSubCategoriesForCategoryByID($id)
 {
-  $categoryid = $id;
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
 
-$sql = "SELECT * FROM subcategory WHERE categoryid = $categoryid";
+$sql = "SELECT * FROM subcategory WHERE categoryid = '$id'";
+
 $categories = array();
 $query=$db->selectFromTable("subcategory");
 while($row=mysqli_fetch_array($query))
 {
+  if($row['categoryid'] == $id)
+  {
   $category = new SubCategory();
   $category->id = $row['id'];
   $category->categoryID = $row['categoryid'];
   $category->subCategoryName  = $row['subcategory'];
+  //echo "<script type='text/javascript'>alert('$category->subCategoryName');</script>";
   $category->creationDate = $row['creationDate'];
   $category->updationDate = $row['updationDate'];
   $category->categoryName = $row['categoryname'];
 
   array_push($categories,$category);
+  }
 }
 return $categories;
 }

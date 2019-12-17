@@ -7,10 +7,13 @@ $db = DB::getInstance();
 $con = $db->get_Connecion();
 
 
-
-
-
 $cid=intval($_GET['cid']);
+$allSubCategories = SubCategory::getAllSubCategoriesForCategoryByID($cid);
+//echo htmlentities("<br><br><br><br><br><br><br>". $cid. "<br>");
+
+
+
+
 if(isset($_GET['action']) && $_GET['action']=="add")
 {
 	$id=intval($_GET['id']);
@@ -20,6 +23,8 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 	}
 	else
 	{
+		$cid=intval($_GET['cid']);
+
 		$sql=mysqli_query($con,"select id,subcategory  from subcategory where categoryid='$cid'");
 
 		/*
