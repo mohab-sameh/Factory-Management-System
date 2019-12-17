@@ -31,6 +31,7 @@ if(isset($_POST['submit']))
 	$catName = Category::getCategoryWithID($categoryName);
 	$catName = $catName->categoryName;
 	$subcat=$_POST['subcategory'];
+	date_default_timezone_set('Africa/Cairo');// change according timezone
 	$currentTime = date( 'd-m-Y h:i:s A', time () );
 	SubCategory::addSubCategory($catID, $catName, $subcat, $currentTime);
 
