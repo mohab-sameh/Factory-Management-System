@@ -98,9 +98,12 @@ static function GetWithID($id)
 }
 function  MakeOrder($qty , $val)
 {
+
   $db = DB::getInstance();
+
+
   $con = $db->get_Connecion();
-$query =  mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$this->id."','$qty','$val')");
+//$query =  mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$this->id."','$qty','$val')");
 
 }
 static function  LogintUser($email,$password)
