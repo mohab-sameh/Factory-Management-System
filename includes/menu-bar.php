@@ -1,11 +1,13 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
 include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+include_once($path);
 $db = DB::getInstance();
 $con = $db->get_Connecion();
  ?>
 
- 
+
 <div class="header-nav animate-dropdown">
     <div class="container">
         <div class="yamm navbar navbar-default" role="navigation">
@@ -25,13 +27,15 @@ $con = $db->get_Connecion();
 				<a href="index.php" data-hover="dropdown" class="dropdown-toggle">Home</a>
 
 			</li>
-              <?php $sql=mysqli_query($con,"select id,categoryName  from category limit 6");
-while($row=mysqli_fetch_array($sql))
+              <?php
+              $allCategories = Category::getAllCategories();
+              //$sql=mysqli_query($con,"select id,categoryName  from category limit 6");
+for($i=0; $i<count($allCategories) and $i < 6; $i++)
 {
     ?>
 
 			<li class="dropdown yamm">
-				<a href="V_Category.php?cid=<?php echo $row['id'];?>"> <?php echo $row['categoryName'];?></a>
+				<a href="V_Category.php?cid=<?php echo($allCategories[$i]->id); ?>"> <?php echo($allCategories[$i]->categoryName);?></a>
 
 			</li>
 			<?php } ?>

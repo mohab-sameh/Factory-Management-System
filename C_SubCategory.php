@@ -1,49 +1,30 @@
 <?php
-session_start();
-error_reporting(0);
-require_once 'DB.php';
-include('V_SubCategory.php');
+include_once('V_SubCategory.php');
 include_once('V_Category.php');
 include('M_SubCategory.php');
 include('M_Category.php');
+
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 
 
 $cid=intval($_GET['scid']);
-if(isset($_GET['action']) && $_GET['action']=="add")
-{
+if(isset($_GET['action']) && $_GET['action']=="add"){
 	$id=intval($_GET['id']);
-	if(isset($_SESSION['cart'][$id]))
-	{
+	if(isset($_SESSION['cart'][$id])){
 		$_SESSION['cart'][$id]['quantity']++;
-	}
-	else
-	{
-		/*$allSubCategories = SubCategory::getAllSubCategoriesForCategoryByID($id);
-
-		if(count($allSubCategories)!=0)
-		{
-			$row_p=mysqli_fetch_array($query_p);
-			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
-			header('location:V_MyCart.php');
-		}
-		else
-		{
-			$message="Product ID is invalid";
-		}*/
+	}else{
 		$sql_p="SELECT * FROM products WHERE id={$id}";
 		$query_p=mysqli_query($con,$sql_p);
 		if(mysqli_num_rows($query_p)!=0){
 			$row_p=mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
-			header('location:V_MyCart.php');
+			header('location:my-cart.php');
 		}else{
 			$message="Product ID is invalid";
 		}
 	}
-}
-// COde for Wishlist
+}// COde for Wishlist
 if(isset($_GET['pid']) && $_GET['action']=="wishlist" )
 {
 	if(strlen($_SESSION['login'])==0)

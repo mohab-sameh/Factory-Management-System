@@ -1,9 +1,9 @@
 <?php
 include('C_Category.php');
-//include_once('C_SubCategory.php');
 include_once('M_Category.php');
 include_once('M_SubCategory.php');
 include_once('DB.php');
+
 $db = DB::getInstance();
 $con = $db->get_Connecion();
 ?>

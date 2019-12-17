@@ -1,7 +1,10 @@
 <?php
 include_once('C_SubCategory.php');
-$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
-include_once($path);
+include_once('M_Category.php');
+include_once('M_SubCategory.php');
+include_once('DB.php');
+$db = DB::getInstance();
+$con = $db->get_Connecion();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,16 +90,15 @@ include_once($path);
 		<h4 class="widget-title">Category</h4>
 	</div>
 	<div class="sidebar-widget-body m-t-10">
-	         <?php
-					 $allCats = Category::getAllCategories();
-for($i=0; i<count($allCats); $i++)
+	         <?php $sql=mysqli_query($con,"select id,categoryName  from category");
+while($row=mysqli_fetch_array($sql))
 {
     ?>
 		<div class="accordion">
 	    	<div class="accordion-group">
 	            <div class="accordion-heading">
-	                <a href="V_Category.php?cid=<?php echo $allCats[$i]->id ?>"  class="accordion-toggle collapsed">
-	                   <?php echo $allCats[$i]->categoryName;?>
+	                <a href="V_Category.php?cid=<?php echo $row['id'];?>"  class="accordion-toggle collapsed">
+	                   <?php echo $row['categoryName'];?>
 	                </a>
 	            </div>
 	        </div>
@@ -127,14 +129,13 @@ for($i=0; i<count($allCats); $i++)
 						<br />
 					</div>
 
-					       <?php
-								 //$allSubs = SubCategory::getAllSubCategoriesForCategoryByID($cid);
-for($i=0; i<count($allSubs); $i++)
+					       <?php $sql=mysqli_query($con,"select subcategory  from subcategory where id='$cid'");
+while($row=mysqli_fetch_array($sql))
 {
     ?>
 
 					<div class="excerpt hidden-sm hidden-md">
-						<?php echo htmlentities($allSubs[$i]->subCategory);?>
+						<?php echo htmlentities($row['subcategory']);?>
 					</div>
 			<?php } ?>
 
@@ -160,20 +161,20 @@ while ($row=mysqli_fetch_array($ret))
 	<div class="product">
 		<div class="product-image">
 			<div class="image">
-				<a href="V_ProductDetails.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" alt="" width="200" height="300"></a>
+				<a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><img  src="assets/images/blank.gif" data-echo="admin/productimages/<?php echo htmlentities($row['id']);?>/<?php echo htmlentities($row['productImage1']);?>" alt="" width="200" height="300"></a>
 			</div><!-- /.image -->
 		</div><!-- /.product-image -->
 
 
 		<div class="product-info text-left">
-			<h3 class="name"><a href="V_ProductDetails.php?pid=<?php echo htmlentities($row['id']);?>"><?php echo htmlentities($row['productName']);?></a></h3>
+			<h3 class="name"><a href="product-details.php?pid=<?php echo htmlentities($row['id']);?>"><?php echo htmlentities($row['productName']);?></a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 
 			<div class="product-price">
 				<span class="price">
-					EGP <?php echo htmlentities($row['productPrice']);?>			</span>
-										     <span class="price-before-discount">EGP <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
+					Rs. <?php echo htmlentities($row['productPrice']);?>			</span>
+										     <span class="price-before-discount">Rs. <?php echo htmlentities($row['productPriceBeforeDiscount']);?></span>
 
 			</div><!-- /.product-price -->
 
@@ -185,13 +186,13 @@ while ($row=mysqli_fetch_array($ret))
 							<button class="btn btn-primary icon" data-toggle="dropdown" type="button">
 								<i class="fa fa-shopping-cart"></i>
 							</button>
-							<a href="V_Category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
+							<a href="category.php?page=product&action=add&id=<?php echo $row['id']; ?>">
 							<button class="btn btn-primary" type="button">Add to cart</button></a>
 
 						</li>
 
 		                <li class="lnk wishlist">
-							<a class="add-to-cart" href="V_Category.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist" title="Wishlist">
+							<a class="add-to-cart" href="category.php?pid=<?php echo htmlentities($row['id'])?>&&action=wishlist" title="Wishlist">
 								 <i class="icon fa fa-heart"></i>
 							</a>
 						</li>

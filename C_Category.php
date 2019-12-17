@@ -1,8 +1,6 @@
 <?php
-session_start();
-error_reporting(0);
-require_once 'DB.php';
 include('M_Category.php');
+include('M_SubCategory.php');
 include_once('V_Category.php');
 
 $db = DB::getInstance();
@@ -22,6 +20,8 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 	}
 	else
 	{
+		$sql=mysqli_query($con,"select id,subcategory  from subcategory where categoryid='$cid'");
+
 		/*
 		$allCategories= Category::getCategoryWithID($id);
 		if(count($allCategories)!=0)
