@@ -28,13 +28,13 @@ if(isset($_GET['submite']))
 {
 
 $mailText = $_GET['mailText'];
-echo $mailText;
+
 $notifer = new EmailNotification();
 $notifer->setEmailText($mailText);
 $users = User::GetAllUser();
 foreach($users as $user)
 {
-	echo $user->name;
+
 	 $notifer->addUser($user);
 }
 $notifer->notifyAll();

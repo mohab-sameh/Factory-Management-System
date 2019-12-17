@@ -1,4 +1,3 @@
-<?php include("../M_User.php") ?>
 
 <div class="top-bar animate-dropdown">
 	<div class="container">

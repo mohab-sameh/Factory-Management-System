@@ -18,7 +18,7 @@ Class User implements Observer
           public $billingPinCode;
           public $regDate;
            public $updateDate;
-          public $notifer;
+
           public $notify;
           public $shippingState;
           function __construct()
@@ -88,13 +88,20 @@ static function GetWithID($id)
         $user->shippingPinCode = $row['shippingPincode'];
         $user->shippingCity  = $row['shippingCity'];
          $user->billingAddress = $row['billingAddress'];
-       $user->billingState = $row['billingState'];
+           $user->billingState = $row['billingState'];
        $user->billingCity = $row['billingCity'];
        $user->shippingState = $row['shippingState'];
          $user->billingPinCode =  $row['billingPincode'];
          $user->regDate =  $row['regDate'];
            $user->updateDate =  $row['updationDate'];
   return $user;
+}
+function  MakeOrder($qty , $val)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+$query =  mysqli_query($con,"insert into orders(userId,productId,quantity) values('".$this->id."','$qty','$val')");
+
 }
 static function  LogintUser($email,$password)
 {
@@ -192,10 +199,11 @@ return $users;
    }
    public function updateMail()
    {
+     ini_set("smtp_port","25");
      $emailText = $this->notify->getEmailText();
      $to = $this->email;
     $subject = "AboElKhier Factory Updates";
-    $txt = $this->mailText;
+    $txt = $emailText;
     $headers = "From: AboElKhier@fact.com";
 
     mail($to,$subject,$txt,$headers);
