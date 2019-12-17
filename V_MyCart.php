@@ -1,5 +1,6 @@
 <?php
 require_once('invoice.php');
+require_once('Iinvoice.php');
 include('Product_Invoice.php');
 include('TaxInvoice.php');
 include('Shipping_Invoice.php');
@@ -7,7 +8,7 @@ include('C_MyCart.php');
 $X = new M_Invoice();
 
 
-echo "string12";
+
 ?>
 
 <!DOCTYPE html>
@@ -211,7 +212,7 @@ $num=mysqli_num_rows($rt);
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "Rs"." ".$productInvoice->price; ?>.00</span></td>
 <td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "Rs"." ".$shippingInvoice->price; ?>.00</span></td>
 
-					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo ($invoice->Get_TotalPrice();); ?>.00</span></td>
+					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo ($invoice->Get_TotalPrice()); ?>.00</span></td>
 				</tr>
 
 				<?php } }
