@@ -128,7 +128,7 @@ for($i=0; i<count($allCats); $i++)
 					</div>
 
 					       <?php
-								 $allSubs = SubCategory::getAllSubCategoriesForCategoryByID($cid);
+								 //$allSubs = SubCategory::getAllSubCategoriesForCategoryByID($cid);
 for($i=0; i<count($allSubs); $i++)
 {
     ?>
