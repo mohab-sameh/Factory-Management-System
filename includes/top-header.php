@@ -1,4 +1,12 @@
+<?php
+session_start();
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
+include_once($path);
+$db = DB::getInstance();
+$con = $db->get_Connecion();
+ ?>
 
+ 
 <div class="top-bar animate-dropdown">
 	<div class="container">
 		<div class="header-top-inner">

@@ -1,3 +1,11 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
+include_once($path);
+$db = DB::getInstance();
+$con = $db->get_Connecion();
+ ?>
+
+ 
 <div class="header-nav animate-dropdown">
     <div class="container">
         <div class="yamm navbar navbar-default" role="navigation">

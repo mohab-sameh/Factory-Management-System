@@ -1,4 +1,12 @@
-<?php include('C_Category.php'); ?>
+<?php
+include('C_Category.php');
+//include_once('C_SubCategory.php');
+include_once('M_Category.php');
+include_once('M_SubCategory.php');
+include_once('DB.php');
+$db = DB::getInstance();
+$con = $db->get_Connecion();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +90,9 @@
 
         <ul class="nav">
             <li class="dropdown menu-item">
-              <?php $sql=mysqli_query($con,"select id,subcategory  from subcategory where categoryid='$cid'");
+              <?php
+
+							$sql=mysqli_query($con,"select id,subcategory  from subcategory where categoryid='$cid'");
 
 while($row=mysqli_fetch_array($sql))
 {

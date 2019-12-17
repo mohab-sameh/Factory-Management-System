@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 require_once 'DB.php';
 include('V_SubCategory.php');
+include_once('V_Category.php');
 include('M_SubCategory.php');
 include('M_Category.php');
 $db = DB::getInstance();
@@ -19,10 +20,9 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 	}
 	else
 	{
-		//$sql_p= SubCategory::getSubCategoryWithID($id);
-		$sql_p="SELECT * FROM products WHERE id={$id}";
-		$query_p=mysqli_query($con,$sql_p);
-		if(mysqli_num_rows($query_p)!=0)
+		/*$allSubCategories = SubCategory::getAllSubCategoriesForCategoryByID($id);
+
+		if(count($allSubCategories)!=0)
 		{
 			$row_p=mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
@@ -30,6 +30,15 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 		}
 		else
 		{
+			$message="Product ID is invalid";
+		}*/
+		$sql_p="SELECT * FROM products WHERE id={$id}";
+		$query_p=mysqli_query($con,$sql_p);
+		if(mysqli_num_rows($query_p)!=0){
+			$row_p=mysqli_fetch_array($query_p);
+			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
+			header('location:V_MyCart.php');
+		}else{
 			$message="Product ID is invalid";
 		}
 	}

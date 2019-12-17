@@ -22,9 +22,9 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 	}
 	else
 	{
-		$sql_p= Category::getCategoryWithID($id);
-		$query_p=mysqli_query($con,$sql_p);
-		if(mysqli_num_rows($query_p)!=0)
+		/*
+		$allCategories= Category::getCategoryWithID($id);
+		if(count($allCategories)!=0)
 		{
 			$row_p=mysqli_fetch_array($query_p);
 			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
@@ -32,6 +32,15 @@ if(isset($_GET['action']) && $_GET['action']=="add")
 		}
 		else
 		{
+			$message="Product ID is invalid";
+		}*/
+		$sql_p="SELECT * FROM products WHERE id={$id}";
+		$query_p=mysqli_query($con,$sql_p);
+		if(mysqli_num_rows($query_p)!=0){
+			$row_p=mysqli_fetch_array($query_p);
+			$_SESSION['cart'][$row_p['id']]=array("quantity" => 1, "price" => $row_p['productPrice']);
+			header('location:V_MyCart.php');
+		}else{
 			$message="Product ID is invalid";
 		}
 
