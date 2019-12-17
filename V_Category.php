@@ -155,15 +155,15 @@ for($i=0; $i<count($allCategories); $i++)
 					</div>
 
 					       <?php
-								 $category = Category::getAllCategories();
-								 $categoryname = $category->categoryName;
+								 $cats = Category::getAllCategoriesWithID($cid);
+
 								  $sql=mysqli_query($con,"select categoryName  from category where id='$cid'");
-while($row=mysqli_fetch_array($sql))
+for($i=0; $i<count($cats); $i++)
 {
     ?>
 
 					<div class="excerpt hidden-sm hidden-md">
-						<?php echo htmlentities($row['categoryName']);?>
+						<?php echo ($cats[$i]->categoryName);?>
 					</div>
 			<?php } ?>
 
