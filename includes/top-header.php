@@ -1,9 +1,10 @@
 <?php
 session_start();
-$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/Factory/DB.php";
 include_once($path);
 $db = DB::getInstance();
 $con = $db->get_Connecion();
+
  ?>
 
 

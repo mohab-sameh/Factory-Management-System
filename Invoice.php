@@ -1,5 +1,6 @@
 <?php
-class Invoice
+
+class M_Invoice
 {
   public $oid;
   public $price;
@@ -7,17 +8,41 @@ class Invoice
   public $totalquantity;
   public $invoice;
 
-
-function Invoice($oid,$price,$quantity,$invoice)
+public function __construct()
 {
-    $this->oid = $oid;
-    $this->price = $price;
-    $this->quantity = $quantity;
-    $this->invoice = $invoice;
+  $this->oid = 0;
+  $this->price = 0;
+  $this->quantity = 0;
+  $this->totalprice = 0;
 }
-function Get_TotalPrice()
+public function invoice($oid,$price,$quantity)
 {
-   $this->totalprice = $this->totalprice + $this->invoice->Get_TotalPrice();
+
+    $this->oid = $oid;
+
+    $this->price = $price;
+
+    $this->quantity = $quantity;
+
+  }
+public  function WrapInvoice($invoice)
+  {
+
+  $this->invoice = $invoice;
+echo ",".$this->invoice->price;
+  }
+public function Calculate_TotalPrice()
+{
+
+  $this->totalprice = $this->quantity * $this->price;
+
+  return $this->totalprice;
+}
+public function Get_TotalPrice()
+{
+       echo "is ks0";
+       echo $this->invoice->price;
+   return $this->totalprice + $this->invoice->Get_TotalPrice();
 }
 
 }

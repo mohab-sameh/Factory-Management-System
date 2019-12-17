@@ -1,6 +1,13 @@
 <?php
-
+require_once('invoice.php');
+include('Product_Invoice.php');
+include('TaxInvoice.php');
+include('Shipping_Invoice.php');
 include('C_MyCart.php');
+$X = new M_Invoice();
+
+
+echo "string12";
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +67,13 @@ include('C_MyCart.php');
 
 		<!-- ============================================== HEADER ============================================== -->
 <header class="header-style-1">
-<?php include('includes/top-header.php');?>
-<?php include('includes/main-header.php');?>
-<?php include('includes/menu-bar.php');?>
+<?php include('includes/top-header.php');
+?>
+
+<?php include('includes/main-header.php');
+?>
+<?php include('includes/menu-bar.php');
+?>
 </header>
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
@@ -113,38 +124,60 @@ if(!empty($_SESSION['cart'])){
 			</tfoot>
 			<tbody>
  <?php
- $pdtid=array();
-    $sql = "SELECT * FROM products WHERE id IN(";
-			foreach($_SESSION['cart'] as $id => $value){
-			$sql .=$id. ",";
-			}
-			$sql=substr($sql,0,-1) . ") ORDER BY id ASC";
-			$message = $sql;
-			echo "<script type='text/javascript'>alert('$message');</script>";
 
-			$query = mysqli_query($con,$sql);
+ $pdtid=array();
+ $invoices = array();
+
+  $products = Products::GetProductsbyID($_SESSION['cart']);
+
 			$totalprice=0;
 			$totalqunty=0;
-			if(!empty($query)){
-			while($row = mysqli_fetch_array($query)){
-				$quantity=$_SESSION['cart'][$row['id']]['quantity'];
-				$subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];
+			if(!empty($products) ){
+ foreach ($products as $product) {
+
+				$quantity=$_SESSION['cart'][$product->id]['quantity'];
+
+
+        $invoice = new M_Invoice();
+				$invoice->invoice(0,0,0);
+
+
+			  $productInvoice = new Product_Invoice();
+				$productInvoice->invoice($product->id,$product->productPrice,$quantity);
+ $productInvoice->Calculate_TotalPrice();
+		    $shippingInvoice = new Shipping_Invoice();
+				$shippingInvoice->invoice($product->id,$product->shippingCharge,$quantity);
+			$shippingInvoice->Get_Price();
+			  $taxInvoice = new Tax_Invoice();
+
+				$taxInvoice->invoice($product->id,$product->productPrice,$quantity);
+      $taxInvoice->Calculate_Tax();
+
+				$invoice->WrapInvoice($productInvoice);
+
+			  $productInvoice->WrapInvoice($shippingInvoice);
+
+				$shippingInvoice->WrapInvoice($taxInvoice);
+
+			  $subtotal = $invoice->Get_TotalPrice();
+
 				$totalprice += $subtotal;
 				$_SESSION['qnty']=$totalqunty+=$quantity;
 
-				array_push($pdtid,$row['id']);
+array_push($invoices,$invoice);
+				array_push($pdtid,$product->id);
 //print_r($_SESSION['pid'])=$pdtid;exit;
 	?>
 
 				<tr>
-					<td class="romove-item"><input type="checkbox" name="remove_code[]" value="<?php echo htmlentities($row['id']);?>" /></td>
+					<td class="romove-item"><input type="checkbox" name="remove_code[]" value="<?php echo htmlentities($product->id);?>" /></td>
 					<td class="cart-image">
 						<a class="entry-thumbnail" href="detail.html">
-						    <img src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" alt="" width="114" height="146">
+						    <img src="admin/productimages/<?php echo $product->id;?>/<?php echo $product->productImage1;?>" alt="" width="114" height="146">
 						</a>
 					</td>
 					<td class="cart-product-name-info">
-						<h4 class='cart-product-description'><a href="V_ProductDetails.php?pid=<?php echo htmlentities($pd=$row['id']);?>" ><?php echo $row['productName'];
+						<h4 class='cart-product-description'><a href="V_ProductDetails.php?pid=<?php echo htmlentities($pd=$product->id);?>" ><?php echo $product->productName;
 
 $_SESSION['sid']=$pd;
 						 ?></a></h4>

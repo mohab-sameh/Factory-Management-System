@@ -1,6 +1,7 @@
 <?php
-
-include_once('C_MainHeader.php');
+include('C_MainHeader.php');
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/Factory/M_Products.php";
+include_once($path);
 
 ?>
 
@@ -35,6 +36,7 @@ include_once('C_MainHeader.php');
 				<div class="col-xs-12 col-sm-12 col-md-3 animate-dropdown top-cart-row">
 					<!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
 <?php
+
 if(MainHeaderController::ifCartSession()){
 	?>
 	<div class="dropdown dropdown-cart">
@@ -57,13 +59,17 @@ if(MainHeaderController::ifCartSession()){
 		<ul class="dropdown-menu">
 
 		 <?php
+
   $products =  Products::GetProductsbyID($_SESSION['cart']);
        $totalprice=0;
        $totalqunty=0;
+
        if(!empty($products)){
-       while($row = mysqli_fetch_array($query)){
-         $quantity=$_SESSION['cart'][$row['id']]['quantity'];
-         $subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];
+foreach($products as $product )
+{
+
+			   $quantity=$_SESSION['cart'][$product->id]['quantity'];
+         $subtotal= $_SESSION['cart'][$product->id]['quantity']*$product->productPrice+$product->shippingCharge;
          $totalprice += $subtotal;
          $_SESSION['qnty']=$totalqunty+=$quantity;
          ?>
@@ -73,13 +79,13 @@ if(MainHeaderController::ifCartSession()){
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="image">
-								<a href="detail.html"><img  src="admin/productimages/<?php echo $row['id'];?>/<?php echo $row['productImage1'];?>" width="35" height="50" alt=""></a>
+								<a href="detail.html"><img  src="admin/productimages/<?php echo $product->id;?>/<?php echo $product->productImage1;?>" width="35" height="50" alt=""></a>
 							</div>
 						</div>
 						<div class="col-xs-7">
 
-							<h3 class="name"><a href="index.php?page-detail"><?php echo $row['productName']; ?></a></h3>
-							<div class="price">EGP.<?php echo ($row['productPrice']+$row['shippingCharge']); ?>*<?php echo $_SESSION['cart'][$row['id']]['quantity']; ?></div>
+							<h3 class="name"><a href="index.php?page-detail"><?php echo $product->productName; ?></a></h3>
+							<div class="price">EGP.<?php echo ($product->productPrice+$product->shippingCharge); ?>*<?php echo $_SESSION['cart'][$product->id]['quantity']; ?></div>
 						</div>
 
 					</div>

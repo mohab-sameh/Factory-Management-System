@@ -1,20 +1,23 @@
 <?php
-include('Invoice.php');
-include('Iinvoice.php');
-class Tax_Invoice extends Invoice implements Iinvoce
+
+
+
+class Tax_Invoice extends M_Invoice
 {
     public $pid;
     public function Calculate_Tax()
     {
 
-         $totalprice = $quantity * $price * 1/10;
-            $return $totalprice;
+         $this->totalprice = $this->quantity * $this->price * 1/10;
+            return $this->totalprice;
        }
 
     function Get_TotalPrice()
     {
-       $totalprice = $totalprice + $invoice->Get_TotalPrice();
-          return $totalprice;
+       echo "is ks3";
+
+          return $this->totalprice ;
     }
 
 }
+?>

@@ -63,7 +63,7 @@ else{
 
 
    $user->MakeOrder($qty,$val);
-	 
+
 header('location:V_PaymentMethod.php');
 }
 
