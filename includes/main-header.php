@@ -57,15 +57,10 @@ if(MainHeaderController::ifCartSession()){
 		<ul class="dropdown-menu">
 
 		 <?php
-     $sql = "SELECT * FROM products WHERE id IN(";
-       foreach($_SESSION['cart'] as $id => $value){
-       $sql .=$id. ",";
-       }
-       $sql=substr($sql,0,-1) . ") ORDER BY id ASC";
-       $query = mysqli_query($con,$sql);
+  $products =  Products::GetProductsbyID($_SESSION['cart']);
        $totalprice=0;
        $totalqunty=0;
-       if(!empty($query)){
+       if(!empty($products)){
        while($row = mysqli_fetch_array($query)){
          $quantity=$_SESSION['cart'][$row['id']]['quantity'];
          $subtotal= $_SESSION['cart'][$row['id']]['quantity']*$row['productPrice']+$row['shippingCharge'];

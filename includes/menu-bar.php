@@ -1,10 +1,10 @@
 <?php
-$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/DB.php";
-include_once($path);
-$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
+
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/Factory/M_Category.php";
 include_once($path);
 $db = DB::getInstance();
 $con = $db->get_Connecion();
+
  ?>
 
 
@@ -29,6 +29,7 @@ $con = $db->get_Connecion();
 			</li>
               <?php
               $allCategories = Category::getAllCategories();
+
               //$sql=mysqli_query($con,"select id,categoryName  from category limit 6");
 for($i=0; $i<count($allCategories) and $i < 6; $i++)
 {

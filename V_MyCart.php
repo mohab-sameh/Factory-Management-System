@@ -119,6 +119,9 @@ if(!empty($_SESSION['cart'])){
 			$sql .=$id. ",";
 			}
 			$sql=substr($sql,0,-1) . ") ORDER BY id ASC";
+			$message = $sql;
+			echo "<script type='text/javascript'>alert('$message');</script>";
+
 			$query = mysqli_query($con,$sql);
 			$totalprice=0;
 			$totalqunty=0;

@@ -4,14 +4,17 @@ include('Iinvoice.php');
 class Tax_Invoice extends Invoice implements Iinvoce
 {
     public $pid;
-    public function Get_Price()
+    public function Calculate_Tax()
     {
-         $return $price * 1/10;
-    }
 
-    public function Get_TotalPrice()
+         $totalprice = $quantity * $price * 1/10;
+            $return $totalprice;
+       }
+
+    function Get_TotalPrice()
     {
-      return $invoice->Get_Price() + $price ;
+       $totalprice = $totalprice + $invoice->Get_TotalPrice();
+          return $totalprice;
     }
 
 }

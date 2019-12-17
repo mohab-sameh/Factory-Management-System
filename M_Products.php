@@ -27,6 +27,41 @@ class Products
 	{
     $db = DB::getInstance();
     $con = $db->get_Connecion();
+
+    static function GetProductsbyID($pidarr)
+    {
+      $db = DB::getInstance();
+      $con = $db->get_Connecion();
+      $sql = "SELECT * FROM products WHERE id IN(";
+        foreach( $pidarr as $id => $value){
+        $sql .=$id. ",";
+        }
+        $sql=substr($sql,0,-1) . ") ORDER BY id ASC";
+        $query = mysqli_query($con,$sql);
+        $products = array();
+        while($row=mysqli_fetch_array($query))
+        {
+          $product = new Products("");
+          $product->id = $row['id'];
+          $product->category=$row['category'];
+          $product->subCategory =$row['subCategory'];
+          $product->productName =$row['productName'];
+          $product->productCompany =$row['productCompany'];
+          $product->productPrice =$row['productPrice'];
+          $product->productBeforeDiscount =$row['productPriceBeforeDiscount'];
+          $product->productDescription =$row['productDescription'];
+          $product->productImage1 =$row['productImage1'];
+          $product->productImage2 =$row['productImage2'];
+          $product->productImage3 =$row['productImage3'];
+          $product->shippingCharge =$row['shippingCharge'];
+          $product->productAvailability =$row['productAvailability'];
+          $product->postingDate =$row['postingDate'];
+          $product->updateDate =$row['updationDate'];
+
+          array_push($products,$product);
+        }
+        return $products;
+    }
 		if ($id !="")
 		{
 			$sql="select * from products where ID=$id";

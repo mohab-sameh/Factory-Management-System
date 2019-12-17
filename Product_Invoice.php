@@ -4,15 +4,19 @@ include('Iinvoice.php');
 class Product_Invoice extends Invoice implements Iinvoce
 {
     public $pid;
-    public function Get_Price()
+    public function Calculate_Price()
     {
-         $return $price;
+      $totalprice = $quantity * $price;
+         $return $totalprice;
     }
 
-        public function Get_TotalPrice()
+
+        function Get_TotalPrice()
         {
-          return $invoice->Get_Price() + $price ;
+           $totalprice = $totalprice + $invoice->Get_TotalPrice();
+              return $totalprice;
         }
+
 
 
 }
