@@ -7,6 +7,8 @@ $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Category.php";
 include_once($path);
 $path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_SubCategory.php";
 include_once($path);
+$path = $_SERVER['DOCUMENT_ROOT'] . "/Factory/M_Products.php";
+include_once($path);
 include_once('V_InsertProduct.php');
 
 $db = DB::getInstance();
@@ -39,11 +41,14 @@ if(isset($_POST['submit']))
 	$productimage1=$_FILES["productimage1"]["name"];
 	$productimage2=$_FILES["productimage2"]["name"];
 	$productimage3=$_FILES["productimage3"]["name"];
+
 //for getting product id
-$query=mysqli_query($con,"select max(id) as pid from products");
-	$result=mysqli_fetch_array($query);
-	 $productid=$result['pid']+1;
+
+	 $productid=Products::getAvailableProductID();
+	 echo($productid);
+	 $productid = intval($productid);
 	$dir="productimages/$productid";
+
 if(!is_dir($dir)){
 		mkdir("productimages/".$productid);
 	}
@@ -51,8 +56,13 @@ if(!is_dir($dir)){
 	move_uploaded_file($_FILES["productimage1"]["tmp_name"],"productimages/$productid/".$_FILES["productimage1"]["name"]);
 	move_uploaded_file($_FILES["productimage2"]["tmp_name"],"productimages/$productid/".$_FILES["productimage2"]["name"]);
 	move_uploaded_file($_FILES["productimage3"]["tmp_name"],"productimages/$productid/".$_FILES["productimage3"]["name"]);
-$sql=mysqli_query($con,"insert into products(category,subCategory,productName,productCompany,productPrice,productDescription,shippingCharge,productAvailability,productImage1,productImage2,productImage3,productPriceBeforeDiscount) values('$category','$subcat','$productname','$productcompany','$productprice','$productdescription','$productscharge','$productavailability','$productimage1','$productimage2','$productimage3','$productpricebd')");
-$_SESSION['msg']="Product Inserted Successfully !!";
+
+
+$case = Products::insertNewProduct($productid,$category,$subcat,$productname,$productcompany,$productprice,$productdescription,$productscharge,$productavailability,$productimage1,$productimage2,$productimage3,$productpricebd);
+if($case == 'success')
+{
+	$_SESSION['msg']="Product Inserted Successfully !!";
+}
 
 }
 }

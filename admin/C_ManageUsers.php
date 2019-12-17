@@ -5,13 +5,15 @@ session_start();
 include('../M_User.php');
 $db = DB::getInstance();
 $con = $db->get_Connecion();
-$users = User::GetAllUser();
+//$users = User::GetAllUser();
 
 if(strlen($_SESSION['alogin'])==0)
 	{
 header('location:index.php');
 }
 else{
+
+$users = User::GetAllUser();
 
 date_default_timezone_set('Africa/Cairo');// change according timezone
 $currentTime = date( 'd-m-Y h:i:s A', time () );
