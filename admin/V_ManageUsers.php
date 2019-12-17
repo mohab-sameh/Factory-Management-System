@@ -53,19 +53,18 @@
 									</thead>
 									<tbody>
 
-<?php $query=mysqli_query($con,"select * from users");
-$cnt=1;
-while($row=mysqli_fetch_array($query))
+<?php $cnt=1;
+foreach($users as $user)
 {
 ?>
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($row['name']);?></td>
-											<td><?php echo htmlentities($row['email']);?></td>
-											<td> <?php echo htmlentities($row['contactno']);?></td>
-											<td><?php echo htmlentities($row['shippingAddress'].",".$row['shippingCity'].",".$row['shippingState']."-".$row['shippingPincode']);?></td>
-											<td><?php echo htmlentities($row['billingAddress'].",".$row['billingCity'].",".$row['billingState']."-".$row['billingPincode']);?></td>
-											<td><?php echo htmlentities($row['regDate']);?></td>
+											<td><?php echo htmlentities($user->name);?></td>
+											<td><?php echo htmlentities($user->email);?></td>
+											<td> <?php echo htmlentities($user->contactNo);?></td>
+											<td><?php echo htmlentities($user->shippingAddress.",".$user->shippingCity.",".$user->shippingState."-".$user->shippingPinCode);?></td>
+											<td><?php echo htmlentities($user->billingAddress.",".$user->billingCity.",".$user->billingState."-".$user->billingPinCode);?></td>
+											<td><?php echo htmlentities($user->regDate);?></td>
 
 										<?php $cnt=$cnt+1; } ?>
 
@@ -80,7 +79,12 @@ while($row=mysqli_fetch_array($query))
 			</div>
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
-
+<div>
+	<form method="get" action="C_ManageUsers.php">
+  EmailInfo: <input type="text" name="mailText"><br>
+  <input type="submit" value="submite" name = "submite">
+</form>
+</div>
 <?php include('include/footer.php');?>
 
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>

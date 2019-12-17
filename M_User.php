@@ -1,6 +1,8 @@
 <?php
 include('DB.php');
-Class User
+include('Observer.php');
+include('EmailNotification.php');
+Class User implements Observer
 {
   public $id;
  public $name;
@@ -9,16 +11,20 @@ Class User
     public $password;
      public $shippingAddress;
       public $shippingPinCode;
+      public $shippingCity;
        public $billingAddress;
         public $billingState;
          public $billingCity;
           public $billingPinCode;
           public $regDate;
            public $updateDate;
-
+          public $notifer;
+          public $notify;
+          public $shippingState;
           function __construct()
           {
             $this->name = "Guest";
+            $notifer = new EmailNotification();
           }
 function getUsername()
 {
@@ -53,8 +59,10 @@ static function populate($email,$password)
  $user->email = $row['email'];
  $user->contactNo = $row['contactno'];
    $user->password = $row['password'];
+   $user->shippingCity  = $row['shippingCity'];
        $user->shippingAddress = $row['shippingAddress'];
         $user->shippingPinCode = $row['shippingPincode'];
+$user->shippingState = $row['shippingState'];
          $user->billingAddress = $row['billingAddress'];
        $user->billingState = $row['billingState'];
        $user->billingCity = $row['billingCity'];
@@ -78,9 +86,11 @@ static function GetWithID($id)
    $user->password = $row['password'];
        $user->shippingAddress = $row['shippingAddress'];
         $user->shippingPinCode = $row['shippingPincode'];
+        $user->shippingCity  = $row['shippingCity'];
          $user->billingAddress = $row['billingAddress'];
        $user->billingState = $row['billingState'];
        $user->billingCity = $row['billingCity'];
+       $user->shippingState = $row['shippingState'];
          $user->billingPinCode =  $row['billingPincode'];
          $user->regDate =  $row['regDate'];
            $user->updateDate =  $row['updationDate'];
@@ -159,9 +169,11 @@ while($row=mysqli_fetch_array($query))
    $user->password = $row['password'];
        $user->shippingAddress = $row['shippingAddress'];
         $user->shippingPinCode = $row['shippingPincode'];
+$user->shippingCity  = $row['shippingCity'];
          $user->billingAddress = $row['billingAddress'];
        $user->billingState = $row['billingState'];
        $user->billingCity = $row['billingCity'];
+       $user->shippingState = $row['shippingState'];
          $user->billingPinCode =  $row['billingPincode'];
          $user->regDate =  $row['regDate'];
            $user->updateDate =  $row['updationDate'];
@@ -173,6 +185,21 @@ return $users;
 }
 
 
-}
+  public function update($notifer)
+  {
 
+     $this->notify = $notifer;
+   }
+   public function updateMail()
+   {
+     $emailText = $this->notify->getEmailText();
+     $to = $this->email;
+    $subject = "AboElKhier Factory Updates";
+    $txt = $this->mailText;
+    $headers = "From: AboElKhier@fact.com";
+
+    mail($to,$subject,$txt,$headers);
+
+}
+}
  ?>
