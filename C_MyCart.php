@@ -59,9 +59,11 @@ else{
 	$value=array_combine($pdd,$quantity);
 
 
-		foreach($value as $qty=> $val){
+	foreach($value as $qty=> $val){
 
-   $User->MakeOrder($qty,$val);
+
+   $user->MakeOrder($qty,$val);
+	 
 header('location:V_PaymentMethod.php');
 }
 
