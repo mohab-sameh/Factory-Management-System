@@ -211,7 +211,7 @@ $num=mysqli_num_rows($rt);
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "Rs"." ".$productInvoice->price; ?>.00</span></td>
 <td class="cart-product-sub-total"><span class="cart-sub-total-price"><?php echo "Rs"." ".$shippingInvoice->price; ?>.00</span></td>
 
-					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo ($invoice->Get_TotalPrice();); ?>.00</span></td>
+					<td class="cart-product-grand-total"><span class="cart-grand-total-price"><?php echo ($invoice->Get_TotalPrice()); ?>.00</span></td>
 				</tr>
 
 				<?php } }

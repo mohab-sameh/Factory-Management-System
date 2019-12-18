@@ -1,6 +1,6 @@
 <?php
 
-class Shipping_Invoice extends M_Invoice implements Iinvoice
+class Shipping_Invoice extends M_Invoice 
 {
     public $pid;
     public function Get_Price()

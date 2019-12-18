@@ -1,6 +1,6 @@
 <?php
 
-class Product_Invoice extends M_Invoice implements Iinvoice
+class Product_Invoice extends M_Invoice
 {
     public $pid;
 

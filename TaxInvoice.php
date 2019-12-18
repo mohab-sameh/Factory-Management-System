@@ -2,7 +2,7 @@
 
 
 
-class Tax_Invoice extends M_Invoice implements Iinvoice
+class Tax_Invoice extends M_Invoice 
 {
     public $pid;
     public function Calculate_Tax()
