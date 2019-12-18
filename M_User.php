@@ -209,7 +209,7 @@ return $users;
     $txt = $emailText;
     $headers = "From: AboElKhier@fact.com";
 
-    mail($to,$subject,$txt,$headers);
+  #  mail($to,$subject,$txt,$headers);
 
 }
 }
