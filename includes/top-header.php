@@ -20,10 +20,8 @@ $con = $db->get_Connecion();
 				<?php } ?>
 
 					<li><a href="V_MyAccount.php"><i class="icon fa fa-user"></i>My Account</a></li>
-					<li><a href="V_MyWishlist.php"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-					<li><a href="V_MyCart.php"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-					<li><a href="#"><i class="icon fa fa-key"></i>Checkout</a></li>
-					<?php if(strlen($_SESSION['login'])==0)
+						<li><a href="V_MyCart.php"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+						<?php if(strlen($_SESSION['login'])==0)
     {   ?>
 <li><a href="V_Login.php"><i class="icon fa fa-sign-in"></i>Login</a></li>
 <?php }
