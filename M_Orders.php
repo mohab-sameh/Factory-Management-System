@@ -38,6 +38,13 @@ static function updateOrder($status,$oid)
   $sql=mysqli_query($con,"update orders set orderStatus='$status' where id='$oid'");
 
 }
+static function updateOrderMethod($method,$id)
+{
+  $db = DB::getInstance();
+  $con = $db->get_Connecion();
+  $sql=	mysqli_query($con,"update orders set 	paymentMethod='".$metho."' where userId='".$id."' and paymentMethod is null ");
+
+}
 
 }
 

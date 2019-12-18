@@ -11,7 +11,7 @@ header('location:index.php');
 }
 else{
   $user = User::GetWithID($_SESSION['id']);
-  echo $user->name ;
+
 	if(isset($_POST['update']))
 	{
 		$name=$_POST['name'];
@@ -24,7 +24,7 @@ echo "<script>alert('Your info has been updated');</script>";
 	}
 }
 
-date_default_timezone_set('Africa/Cairo');// change according timezone
+date_default_timezone_set('Africa/Cairo');
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 
 

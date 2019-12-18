@@ -5,7 +5,7 @@
 class Tax_Invoice extends M_Invoice 
 {
     public $pid;
-    public function Get_Price()
+    public function Calculate_Tax()
     {
 
          $this->totalprice = $this->quantity * $this->price * 1/10;

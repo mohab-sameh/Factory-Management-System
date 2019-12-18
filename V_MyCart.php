@@ -1,12 +1,10 @@
 <?php
 require_once('invoice.php');
-require_once('Iinvoice.php');
+
 include('Product_Invoice.php');
 include('TaxInvoice.php');
 include('Shipping_Invoice.php');
 include('C_MyCart.php');
-$X = new M_Invoice();
-
 
 
 ?>
@@ -152,12 +150,11 @@ if(!empty($_SESSION['cart'])){
 			  $taxInvoice = new Tax_Invoice();
 
 				$taxInvoice->invoice($product->id,$product->productPrice,$quantity);
-      $taxInvoice->Calculate_Tax();
 
+      $taxInvoice->Calculate_Tax();
 				$invoice->WrapInvoice($productInvoice);
 
 			  $productInvoice->WrapInvoice($shippingInvoice);
-
 				$shippingInvoice->WrapInvoice($taxInvoice);
 
 			  $subtotal = $invoice->Get_TotalPrice();
@@ -168,6 +165,7 @@ if(!empty($_SESSION['cart'])){
 array_push($invoices,$invoice);
 				array_push($pdtid,$product->id);
 //print_r($_SESSION['pid'])=$pdtid;exit;
+
 	?>
 
 				<tr>

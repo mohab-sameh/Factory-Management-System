@@ -1,6 +1,6 @@
 <?php
-
-class M_Invoice
+require_once('aInvoice.php');	
+class M_Invoice implements aInvoice
 {
   public $oid;
   public $price;

@@ -1,6 +1,6 @@
 <?php
 
- interface Iinvoice
+ interface aInvoice
  {
    public function Get_TotalPrice();
  }
