@@ -1,5 +1,6 @@
 <?php
 require_once('invoice.php');
+require_once('Iinvoice.php');
 include('Product_Invoice.php');
 include('TaxInvoice.php');
 include('Shipping_Invoice.php');
@@ -7,7 +8,7 @@ include('C_MyCart.php');
 $X = new M_Invoice();
 
 
-echo "string12";
+
 ?>
 
 <!DOCTYPE html>
